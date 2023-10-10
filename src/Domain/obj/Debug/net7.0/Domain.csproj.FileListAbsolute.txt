@@ -9,3 +9,14 @@ C:\Arquivos\Projeto Integrador\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Domain\obj\Debug\net7.0\ref\Domain.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\bin\Debug\net7.0\Domain.deps.json
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\bin\Debug\net7.0\Domain.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\bin\Debug\net7.0\Domain.pdb
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\refint\Domain.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\Domain.pdb
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\obj\Debug\net7.0\ref\Domain.dll
