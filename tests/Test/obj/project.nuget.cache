@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nQph9A+6729bjnQGF6/TIS6pB+C29jNmkZl8jO6JI/ucMGHQf/HTAio2myQlwHSt/WO+t20jkHGQMWHOx9V2WA==",
+  "dgSpecHash": "PIsdEoucHhUwWZxDN0CZ55db6rOmoSESkgknOr6tRtaOZc5SM3CPgd4opEzbPBx+02d5WhNmz9OlwsjC5WtbWA==",
   "success": true,
-  "projectFilePath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back\\tests\\Test\\Test.csproj",
+  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\tests\\Test\\Test.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -40,8 +40,8 @@ namespace CredLend_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] UserViewModel request)
         {
-            if (request == null)
-            {
+           
+            if(request == null){
                 return BadRequest("O objeto de solicitação é nulo");
             }
 
@@ -61,6 +61,7 @@ namespace CredLend_API.Controllers
 
             var response = new UserViewModel
             {
+                Id = user.Id,
                 Name = user.Name,
                 BirthDate = user.BirthDate,
                 IsAdm = user.IsAdm,
@@ -88,11 +89,6 @@ namespace CredLend_API.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] UserViewModel request)
         {
-
-            // _userRepository.Update(user);
-            // await _uow.SaveChangesAsync();
-            // return NoContent();
-
             var entity = _userRepository.GetById(request.Id);
 
             if (request.Id != entity.Id)
