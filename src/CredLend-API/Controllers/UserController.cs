@@ -27,8 +27,9 @@ namespace CredLend_API.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userRepository.GetAll();
-            
-            if (users == null) {
+
+            if (users == null)
+            {
                 return NotFound("Nenhum usuário encontrado");
             }
 
@@ -39,7 +40,8 @@ namespace CredLend_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] UserViewModel request)
         {
-            if(request == null){
+            if (request == null)
+            {
                 return BadRequest("O objeto de solicitação é nulo");
             }
 
@@ -65,18 +67,72 @@ namespace CredLend_API.Controllers
                 Email = user.Email,
                 Password = user.Password,
                 BankAccount = user.BankAccount,
-                AgencyNumber = request.AgencyNumber
+                AgencyNumber = user.AgencyNumber
             };
 
             await _uow.SaveChangesAsync();
             return Ok(response);
         }
 
-        [HttpGet ("{UserId}")]
-        public IActionResult GetById(Guid UserId){
+        [HttpGet("{UserId}")]
+        public IActionResult GetById(Guid UserId)
+        {
             var entity = _userRepository.GetById(UserId);
+            if (entity == null)
+            {
+                return NotFound();
+            }
             return Ok(entity);
         }
-        
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] UserViewModel request)
+        {
+
+            // _userRepository.Update(user);
+            // await _uow.SaveChangesAsync();
+            // return NoContent();
+
+            var entity = _userRepository.GetById(request.Id);
+
+            if (request.Id != entity.Id)
+            {
+                return BadRequest();
+            }
+
+            if (entity == null) return NotFound();
+
+
+
+            entity.Name = request.Name;
+            entity.BirthDate = request.BirthDate;
+            entity.IsAdm = request.IsAdm;
+            entity.Email = request.Email;
+            entity.Password = request.Password;
+            entity.BankAccount = request.BankAccount;
+            entity.AgencyNumber = request.AgencyNumber;
+
+
+            _userRepository.Update(entity);
+            await _uow.SaveChangesAsync();
+            return Ok(entity);
+        }
+
+        [HttpDelete("{UserId}")]
+
+        public async Task<IActionResult> Delete(Guid UserId)
+        {
+            var entity = _userRepository.GetById(UserId);
+
+            if (entity == null)
+            {
+                return BadRequest();
+            }
+
+            _userRepository.Delete(entity);
+            await _uow.SaveChangesAsync();
+            return Ok(entity);
+        }
+
     }
 }
