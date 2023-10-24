@@ -52,9 +52,7 @@ namespace CredLend_API.Controllers
                 BirthDate = request.BirthDate,
                 IsAdm = request.IsAdm,
                 Email = request.Email,
-                Password = request.Password,
-                BankAccount = request.BankAccount,
-                AgencyNumber = request.AgencyNumber
+                Password = request.Password
             };
 
             _userRepository.Add(user);
@@ -66,9 +64,7 @@ namespace CredLend_API.Controllers
                 BirthDate = user.BirthDate,
                 IsAdm = user.IsAdm,
                 Email = user.Email,
-                Password = user.Password,
-                BankAccount = user.BankAccount,
-                AgencyNumber = user.AgencyNumber
+                Password = user.Password
             };
 
             await _uow.SaveChangesAsync();
@@ -105,8 +101,6 @@ namespace CredLend_API.Controllers
             entity.IsAdm = request.IsAdm;
             entity.Email = request.Email;
             entity.Password = request.Password;
-            entity.BankAccount = request.BankAccount;
-            entity.AgencyNumber = request.AgencyNumber;
 
 
             _userRepository.Update(entity);
