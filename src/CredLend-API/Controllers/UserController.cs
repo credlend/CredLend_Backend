@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.UserModel;
 using Domain.ViewModels;
@@ -16,11 +17,13 @@ namespace CredLend_API.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _uow;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserRepository userRepository, IUnitOfWork uow)
+        public UserController(IUserRepository userRepository, IUnitOfWork uow, IMapper mapper)
         {
             _userRepository = userRepository;
             _uow = uow;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -40,35 +43,29 @@ namespace CredLend_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] UserViewModel request)
         {
-           
-            if(request == null){
+            if (request == null)
+            {
                 return BadRequest("O objeto de solicitação é nulo");
             }
 
-            var user = new User
+            var user = _mapper.Map<User>(request);
+
+            var listUser = await _userRepository.GetAll();
+
+            listUser.ToList();
+
+            foreach (var item in listUser)
             {
-                Id = Guid.NewGuid(),
-                Name = request.Name,
-                BirthDate = request.BirthDate,
-                IsAdm = request.IsAdm,
-                Email = request.Email,
-                Password = request.Password
-            };
+                bool verifica = user.Email.Contains(item.Email, StringComparison.OrdinalIgnoreCase);
+                if (verifica)
+                {
+                    return BadRequest("Este usuário já existe no banco de dados");
+                }
+            }
 
             _userRepository.Add(user);
-
-            var response = new UserViewModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                BirthDate = user.BirthDate,
-                IsAdm = user.IsAdm,
-                Email = user.Email,
-                Password = user.Password
-            };
-
             await _uow.SaveChangesAsync();
-            return Ok(response);
+            return Ok(user);
         }
 
         [HttpGet("{UserId}")]
@@ -83,25 +80,18 @@ namespace CredLend_API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] UserViewModel request)
+        public async Task<IActionResult> Put([FromBody] UserViewModel user)
         {
-            var entity = _userRepository.GetById(request.Id);
+            var entity = _userRepository.GetById(user.Id);
 
-            if (request.Id != entity.Id)
+            if (user.Id != entity.Id)
             {
                 return BadRequest();
             }
 
             if (entity == null) return NotFound();
 
-
-
-            entity.Name = request.Name;
-            entity.BirthDate = request.BirthDate;
-            entity.IsAdm = request.IsAdm;
-            entity.Email = request.Email;
-            entity.Password = request.Password;
-
+            _mapper.Map(user, entity);
 
             _userRepository.Update(entity);
             await _uow.SaveChangesAsync();
@@ -116,7 +106,7 @@ namespace CredLend_API.Controllers
 
             if (entity == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             _userRepository.Delete(entity);

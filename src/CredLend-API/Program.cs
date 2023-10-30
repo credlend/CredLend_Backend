@@ -21,6 +21,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();
 builder.Services.AddScoped<IInventmentPlanRepository, InvestmentPlanRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAutoMapper(typeof(ApplicationDataContext));
 
 var app = builder.Build();
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj": {
+    "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\obj\\",
+        "outputPath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,8 +91,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj"
+              "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -107,6 +107,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.10, )"

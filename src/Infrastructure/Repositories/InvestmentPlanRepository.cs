@@ -15,9 +15,9 @@ namespace Infrastructure.Repositories
         {
         }
 
-        public void Delete(InvestmentPlan investmentPlan)
+        public void SwitchInvestmentPlan(InvestmentPlan entity)
         {
-            _entity.Remove(investmentPlan);
+            _entity.Update(entity);
         }
     }
 }

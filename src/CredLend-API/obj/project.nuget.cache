@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "nN6GiptqvBbp05RIf0HDEhp0dJE45Kl6OlPjcD/wy7NMM/i0WM1SC1P3BwL7ybIDbN7mjWjlttpd9cvPOYeMJA==",
+  "dgSpecHash": "lyOyJyuHLt1YnBGXhJUn5+OtHAbe02AUObvAFVqoLcPnY1IVkiBBS13v/dON3bH3W3Ar87uWCbY+QysG2RPcBQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\CredLend-API\\CredLend-API.csproj",
+  "projectFilePath": "C:\\Arquivos\\Projeto Integrador\\CredLend_Back_Copia\\src\\CredLend-API\\CredLend-API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gussi\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\gussi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.4\\microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
+    "C:\\Users\\gussi\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.10\\microsoft.data.sqlite.core.7.0.10.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.10\\microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",

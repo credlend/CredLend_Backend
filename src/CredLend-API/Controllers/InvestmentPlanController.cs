@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.PlanModel;
 using Domain.ViewModels;
@@ -17,10 +18,13 @@ namespace CredLend_API.Controllers
         private readonly IInventmentPlanRepository _investmentPlan;
         private readonly IUnitOfWork _uow;
 
-        public InvestmentPlanController(IInventmentPlanRepository inventmentPlanRepository, IUnitOfWork uow)
+        private readonly IMapper _mapper;
+
+        public InvestmentPlanController(IInventmentPlanRepository inventmentPlanRepository, IUnitOfWork uow, IMapper mapper)
         {
             _investmentPlan = inventmentPlanRepository;
             _uow = uow;
+            _mapper = mapper;
         }
 
 
@@ -32,6 +36,13 @@ namespace CredLend_API.Controllers
             if (plans == null)
             {
                 return NotFound("Nenhum palno de empréstimo cadatrado");
+            }
+
+            var activeLoanPlan = plans.Where(plan => plan.IsActive == true).ToList();
+
+            if (activeLoanPlan.Count == 0)
+            {
+                return NotFound("Nenhum plano ativo encontrado");
             }
 
             return Ok(plans);
@@ -46,32 +57,25 @@ namespace CredLend_API.Controllers
                 return BadRequest("O objeto de solicitação é nulo");
             }
 
-            var investmentPlan = new InvestmentPlan
+            var investmentPlan = _mapper.Map<InvestmentPlan>(request);
+
+            var listInvestmentPlan = await _investmentPlan.GetAll();
+
+            listInvestmentPlan.ToList();
+
+            foreach (var item in listInvestmentPlan)
             {
-                Id = Guid.NewGuid(),
-                TypePlan = request.TypePlan,
-                ValuePlan = request.ValuePlan,
-                TransactionWay = request.TransactionWay,
-                UserID = request.UserID,
-                ReturnRate = request.ReturnRate,
-                ReturnDeadLine = request.ReturnDeadLine,
-            };
+                bool verifica = investmentPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
+                if (verifica)
+                {
+                    return BadRequest("Este plano já existe no banco de dados");
+                }
+            }
 
             _investmentPlan.Add(investmentPlan);
 
-            var response = new InvestmentPlanViewModel
-            {
-                Id = investmentPlan.Id,
-                TypePlan = investmentPlan.TypePlan,
-                ValuePlan = investmentPlan.ValuePlan,
-                TransactionWay = investmentPlan.TransactionWay,
-                UserID = investmentPlan.UserID,
-                ReturnRate = investmentPlan.ReturnRate,
-                ReturnDeadLine = investmentPlan.ReturnDeadLine
-            };
-
             await _uow.SaveChangesAsync();
-            return Ok(response);
+            return Ok(investmentPlan);
         }
 
 
@@ -88,49 +92,41 @@ namespace CredLend_API.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] InvestmentPlanViewModel request)
+        public async Task<IActionResult> Put([FromBody] InvestmentPlanViewModel investmentPlan)
         {
+            var entity = _investmentPlan.GetById(investmentPlan.Id);
 
-            var entity = _investmentPlan.GetById(request.Id);
-
-            if (request.Id != entity.Id)
+            if (investmentPlan.Id != entity.Id)
             {
                 return BadRequest();
             }
 
             if (entity == null) return NotFound();
 
-
-
-            entity.TypePlan = request.TypePlan;
-            entity.ValuePlan = request.ValuePlan;
-            entity.TransactionWay = request.TransactionWay;
-            entity.UserID = request.UserID;
-            entity.ReturnRate = request.ReturnRate;
-            entity.ReturnDeadLine = request.ReturnDeadLine;
-
+            _mapper.Map(investmentPlan, entity);
 
             _investmentPlan.Update(entity);
             await _uow.SaveChangesAsync();
             return Ok(entity);
         }
 
+        [HttpPut("{InvestmentPlanId}")]
+        public async Task<IActionResult> SwitchInvestmentPlan(Guid InvestmentPlanId){
+            var existingPlan = _investmentPlan.GetById(InvestmentPlanId);
 
-        [HttpDelete("{InvestmentPlanId}")]
-
-        public async Task<IActionResult> Delete(Guid InvestmentPlanId)
-        {
-            var entity = _investmentPlan.GetById(InvestmentPlanId);
-
-            if (entity == null)
-            {
+            if(InvestmentPlanId != existingPlan.Id) {
                 return BadRequest();
             }
 
-            _investmentPlan.Delete(entity);
+            if(!existingPlan.IsActive) {
+                existingPlan.IsActive = true;
+            } else {
+                existingPlan.IsActive = false;
+            }
+
+            _investmentPlan.SwitchInvestmentPlan(existingPlan);
             await _uow.SaveChangesAsync();
-            return Ok(entity);
+            return Ok(existingPlan);
         }
-    
     }
 }

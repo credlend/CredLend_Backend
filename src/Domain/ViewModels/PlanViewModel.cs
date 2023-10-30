@@ -7,7 +7,7 @@ namespace Domain.ViewModels
 {
     public class PlanViewModel
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string TypePlan { get; set; }
         public float ValuePlan { get; set; }
         public string TransactionWay { get; set; }

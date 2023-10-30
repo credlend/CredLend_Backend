@@ -7,7 +7,7 @@ namespace Domain.Models.UserModel
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsAdm { get; set; }
