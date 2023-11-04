@@ -11,6 +11,6 @@ namespace Domain.ViewModels
         public string TypePlan { get; set; }
         public float ValuePlan { get; set; }
         public string TransactionWay { get; set; }
-        public Guid UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

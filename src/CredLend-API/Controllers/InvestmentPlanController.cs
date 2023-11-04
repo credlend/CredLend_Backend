@@ -35,10 +35,10 @@ namespace CredLend_API.Controllers
 
             if (plans == null)
             {
-                return NotFound("Nenhum palno de empréstimo cadatrado");
+                return NotFound("Nenhum palno de investimento cadatrado");
             }
 
-            var activeLoanPlan = plans.Where(plan => plan.IsActive == true).ToList();
+            var activeLoanPlan = plans.Where(p => p.IsActive == true).ToList();
 
             if (activeLoanPlan.Count == 0)
             {
@@ -80,7 +80,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet("{InvestmentPlanId}")]
-        public IActionResult GetById(Guid InvestmentPlanId)
+        public async Task<IActionResult> GetById(Guid InvestmentPlanId)
         {
             var entity = _investmentPlan.GetById(InvestmentPlanId);
             if (entity == null)
@@ -94,7 +94,7 @@ namespace CredLend_API.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] InvestmentPlanViewModel investmentPlan)
         {
-            var entity = _investmentPlan.GetById(investmentPlan.Id);
+            var entity = await _investmentPlan.GetById(investmentPlan.Id);
 
             if (investmentPlan.Id != entity.Id)
             {
@@ -112,16 +112,16 @@ namespace CredLend_API.Controllers
 
         [HttpPut("{InvestmentPlanId}")]
         public async Task<IActionResult> SwitchInvestmentPlan(Guid InvestmentPlanId){
-            var existingPlan = _investmentPlan.GetById(InvestmentPlanId);
+            var existingPlan = await _investmentPlan.GetById(InvestmentPlanId);
 
             if(InvestmentPlanId != existingPlan.Id) {
                 return BadRequest();
             }
 
-            if(!existingPlan.IsActive) {
-                existingPlan.IsActive = true;
+            if(existingPlan.IsActive) {
+                 existingPlan.IsActive = false;
             } else {
-                existingPlan.IsActive = false;
+                existingPlan.IsActive = true;
             }
 
             _investmentPlan.SwitchInvestmentPlan(existingPlan);

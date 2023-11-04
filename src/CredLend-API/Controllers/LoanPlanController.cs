@@ -36,9 +36,9 @@ namespace CredLend_API.Controllers
                 return NotFound("Nenhum palno de empréstimo cadatrado");
             }
 
-            var activeLoanPlan = plans.Where(plan => plan.IsActive == true).ToList();
+            var loanPlan = plans.Where(p => p.IsActive == true).ToList();
             
-            if(activeLoanPlan.Count == 0){
+            if(loanPlan.Count == 0){
                 return NotFound("Nenhum plano ativo encontrado");
             }
 
@@ -77,7 +77,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet("{LoanPlanId}")]
-        public IActionResult GetById(Guid LoanPlanId)
+         public async Task<IActionResult> GetById(Guid LoanPlanId)
         {
             var entity = _loanPlanRepository.GetById(LoanPlanId);
             if (entity == null)
@@ -92,7 +92,7 @@ namespace CredLend_API.Controllers
         public async Task<IActionResult> Put([FromBody] LoanPlanViewModel loanPlan)
         {
 
-            var entity = _loanPlanRepository.GetById(loanPlan.Id);
+            var entity = await _loanPlanRepository.GetById(loanPlan.Id);
 
             if (loanPlan.Id != entity.Id)
             {
@@ -110,16 +110,16 @@ namespace CredLend_API.Controllers
 
         [HttpPut("{LoanPlanId}")]
         public async Task<IActionResult> SwitchLoanPlan(Guid LoanPlanId){
-            var existingPlan = _loanPlanRepository.GetById(LoanPlanId);
+            var existingPlan = await _loanPlanRepository.GetById(LoanPlanId);
 
             if(LoanPlanId != existingPlan.Id) {
                 return BadRequest();
             }
 
-            if(!existingPlan.IsActive) {
-                existingPlan.IsActive = true;
-            } else {
+            if(existingPlan.IsActive) {
                 existingPlan.IsActive = false;
+            } else {
+                existingPlan.IsActive = true;
             }
 
             _loanPlanRepository.SwitchLoanPlan(existingPlan);

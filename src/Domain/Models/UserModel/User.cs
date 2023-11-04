@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
+using Domain.Models.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace Domain.Models.UserModel
 {
-    public class User
+    public class User : IdentityUser
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
-        public bool IsAdm { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public List<UserRole> UserRoles { get; set; }
+        public bool IsActive { get; set; }
     }
 }

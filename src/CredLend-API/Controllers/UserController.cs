@@ -1,13 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using AutoMapper;
 using Domain.Core.Data;
+using Domain.Models.Dto;
+using Domain.Models.Identity;
 using Domain.Models.UserModel;
-using Domain.ViewModels;
-using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CredLend_API.Controllers
 {
@@ -15,104 +18,176 @@ namespace CredLend_API.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository<User> _userRepository;
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _config;
+        private readonly UserManager<User> _userManager;
 
-        public UserController(IUserRepository userRepository, IUnitOfWork uow, IMapper mapper)
+        public SignInManager<User> _SignInManager;
+
+        public UserController(IUserRepository<User> userRepository, IUnitOfWork uow, IMapper mapper, IConfiguration config, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userRepository = userRepository;
             _uow = uow;
             _mapper = mapper;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _userRepository.GetAll();
-
-            if (users == null)
-            {
-                return NotFound("Nenhum usuário encontrado");
-            }
-
-            return Ok(users);
+            _config = config;
+            _userManager = userManager;
+            _SignInManager = signInManager;
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] UserViewModel request)
+        // [HttpGet]
+        // [AllowAnonymous]
+        // public async Task<ActionResult> GetAll()
+        // {
+        //     try
+        //     {
+        //         var entity = _userRepository.GetUserRoles();
+
+        //         return Ok(entity);
+        //         //return Ok(await _service.GetAll());
+        //     }
+        //     catch (System.Exception ex)
+        //     {
+        //         return this.StatusCode(StatusCodes.Status500InternalServerError,
+        //          $"Banco dados Falhou: {ex.Message} ");
+        //     }
+        // }
+
+
+
+        [HttpPost("Register")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(UserDto userDto)
         {
-            if (request == null)
+            try
             {
-                return BadRequest("O objeto de solicitação é nulo");
-            }
+                var user = await _userManager.FindByNameAsync(userDto.UserName);
 
-            var user = _mapper.Map<User>(request);
-
-            var listUser = await _userRepository.GetAll();
-
-            listUser.ToList();
-
-            foreach (var item in listUser)
-            {
-                bool verifica = user.Email.Contains(item.Email, StringComparison.OrdinalIgnoreCase);
-                if (verifica)
+                if (user == null)
                 {
-                    return BadRequest("Este usuário já existe no banco de dados");
+                    user = new User
+                    {
+                        UserName = userDto.UserName,
+                        NormalizedEmail = userDto.Email,
+                        Email = userDto.Email,
+                        Name = userDto.Name,
+                        IsActive = true,
+                        BirthDate = userDto.BirthDate
+                    };
+
+
+                    var result = await _userManager.CreateAsync(
+                        user, userDto.Password
+                    );
+
+                    if (result.Succeeded)
+                    {
+                        var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == user.UserName.ToUpper());
+                        var token = GenerateJWToken(appUser).Result;
+                        return Ok(token);
+                    }
+
                 }
+
+                return Unauthorized();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine("Erro ao salvar as alterações: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Exceção interna: " + ex.InnerException.Message);
+                }
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Error {ex.Message}");
             }
 
-            _userRepository.Add(user);
-            await _uow.SaveChangesAsync();
-            return Ok(user);
+
         }
 
-        [HttpGet("{UserId}")]
-        public IActionResult GetById(Guid UserId)
+        private async Task<string> GenerateJWToken(User user)
         {
-            var entity = _userRepository.GetById(UserId);
-            if (entity == null)
+            var claims = new List<Claim>
+           {
+            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+            new Claim(ClaimTypes.Name,user.UserName)
+           };
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
             {
-                return NotFound();
+                claims.Add(new Claim(ClaimTypes.Role, role));
             }
-            return Ok(entity);
+
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescription);
+
+            return tokenHandler.WriteToken(token);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody] UserViewModel user)
-        {
-            var entity = _userRepository.GetById(user.Id);
 
-            if (user.Id != entity.Id)
+        [HttpPost("Login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(UserLoginDto userLogin)
+        {
+            try
             {
-                return BadRequest();
+                var user = await _userManager.FindByEmailAsync(userLogin.Email);
+
+                var result = await _SignInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
+
+                if (result.Succeeded)
+                {
+                    var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
+
+                    var userToReturn = _mapper.Map<UserLoginDto>(appUser);
+
+                    return Ok(new
+                    {
+                        token = GenerateJWToken(appUser).Result,
+                        user = appUser
+                    });
+                }
+
+                return Unauthorized();
             }
+            catch (System.Exception ex)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Error {ex.Message}");
+            }
+        }
+
+        [HttpDelete("{Id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(string Id)
+        {
+            var entity = await _userRepository.GetById(Id);
 
             if (entity == null) return NotFound();
 
-            _mapper.Map(user, entity);
+            entity.IsActive = false;
 
-            _userRepository.Update(entity);
-            await _uow.SaveChangesAsync();
-            return Ok(entity);
-        }
-
-        [HttpDelete("{UserId}")]
-
-        public async Task<IActionResult> Delete(Guid UserId)
-        {
-            var entity = _userRepository.GetById(UserId);
-
-            if (entity == null)
-            {
-                return NotFound();
-            }
-
-            _userRepository.Delete(entity);
-            await _uow.SaveChangesAsync();
-            return Ok(entity);
+            if (await _userRepository.SaveChangesAsync())
+                return Ok();
+            return BadRequest();
         }
 
     }
+
+
 }
