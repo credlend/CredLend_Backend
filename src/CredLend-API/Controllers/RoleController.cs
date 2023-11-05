@@ -18,9 +18,9 @@ namespace CredLend_API.Controllers
     {
         private readonly RoleManager<Role> _roleManagers;
         private readonly UserManager<User> _userManager;
-        private readonly IRoleRepository<Role> _roleRepository;
+        private readonly IRoleRepository _roleRepository;
 
-        public RoleController(RoleManager<Role> roleManagers, UserManager<User> userManager, IRoleRepository<Role> roleRepository)
+        public RoleController(RoleManager<Role> roleManagers, UserManager<User> userManager, IRoleRepository roleRepository)
         {
             _roleManagers = roleManagers;
             _userManager = userManager;

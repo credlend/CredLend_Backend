@@ -7,8 +7,7 @@ namespace Domain.Models.PlanModel
 {
     public class InvestmentPlan : Plan 
     {
-        public float ReturnRate { get; set; }
-
+        public double ReturnRate { get; set; }
         public DateTime ReturnDeadLine { get; set; }
     }
 }

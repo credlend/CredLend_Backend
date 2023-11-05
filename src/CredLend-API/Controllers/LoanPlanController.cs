@@ -36,13 +36,13 @@ namespace CredLend_API.Controllers
                 return NotFound("Nenhum palno de empréstimo cadatrado");
             }
 
-            var loanPlan = plans.Where(p => p.IsActive == true).ToList();
+            var activeLoanPlan = plans.Where(p => p.IsActive == true).ToList();
             
-            if(loanPlan.Count == 0){
+            if(activeLoanPlan.Count == 0){
                 return NotFound("Nenhum plano ativo encontrado");
             }
 
-            return Ok(plans);
+            return Ok(activeLoanPlan);
         }
 
 

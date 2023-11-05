@@ -59,10 +59,10 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ReturnRate = table.Column<float>(type: "REAL", nullable: false),
+                    ReturnRate = table.Column<double>(type: "REAL", nullable: false),
                     ReturnDeadLine = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TypePlan = table.Column<string>(type: "TEXT", nullable: false),
-                    ValuePlan = table.Column<float>(type: "REAL", nullable: false),
+                    ValuePlan = table.Column<double>(type: "REAL", nullable: false),
                     TransactionWay = table.Column<string>(type: "TEXT", nullable: false),
                     UserID = table.Column<string>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
@@ -78,9 +78,9 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     PaymentTerm = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    InterestRate = table.Column<float>(type: "REAL", nullable: false),
+                    InterestRate = table.Column<double>(type: "REAL", nullable: false),
                     TypePlan = table.Column<string>(type: "TEXT", nullable: false),
-                    ValuePlan = table.Column<float>(type: "REAL", nullable: false),
+                    ValuePlan = table.Column<double>(type: "REAL", nullable: false),
                     TransactionWay = table.Column<string>(type: "TEXT", nullable: false),
                     UserID = table.Column<string>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false)

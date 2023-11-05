@@ -61,7 +61,7 @@ builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();
 builder.Services.AddScoped<IInventmentPlanRepository, InvestmentPlanRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IUserRepository<>), typeof(UserRepository<>));
-builder.Services.AddScoped(typeof(IRoleRepository<>), typeof(RoleRepository<>));
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationDataContext));
 
 var mappingConfig = new MapperConfiguration(mc =>
@@ -114,6 +114,17 @@ builder.Services.AddMvc(options =>
     }
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder
+           .WithOrigins("http://localhost:4200")
+           .AllowAnyHeader()
+           .AllowAnyMethod();
+    });
+});
+
 
 var app = builder.Build();
 
@@ -125,6 +136,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthentication();
 

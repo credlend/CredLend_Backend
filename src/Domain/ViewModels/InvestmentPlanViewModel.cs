@@ -9,7 +9,7 @@ namespace Domain.ViewModels
     {
         public DateTime ReturnDeadLine { get; set; }
 
-         public float ReturnRate { get; set; }
-        
+        public double ReturnRate { get; set; }
+
     }
 }

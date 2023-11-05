@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20231103230243_updateUserIdentity")]
-    partial class updateUserIdentity
+    [Migration("20231105183324_InitialDBIdentity")]
+    partial class InitialDBIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("ReturnDeadLine")
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("ReturnRate")
+                    b.Property<double>("ReturnRate")
                         .HasColumnType("REAL");
 
                     b.Property<string>("TransactionWay")
@@ -91,7 +91,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("ValuePlan")
+                    b.Property<double>("ValuePlan")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");
@@ -105,7 +105,7 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("InterestRate")
+                    b.Property<double>("InterestRate")
                         .HasColumnType("REAL");
 
                     b.Property<bool>("IsActive")
@@ -126,7 +126,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("ValuePlan")
+                    b.Property<double>("ValuePlan")
                         .HasColumnType("REAL");
 
                     b.HasKey("Id");

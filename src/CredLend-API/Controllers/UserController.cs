@@ -37,24 +37,15 @@ namespace CredLend_API.Controllers
         }
 
 
-        // [HttpGet]
-        // [AllowAnonymous]
-        // public async Task<ActionResult> GetAll()
-        // {
-        //     try
-        //     {
-        //         var entity = _userRepository.GetUserRoles();
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetUsers(){
+            var users  = _userManager.Users.ToList();
 
-        //         return Ok(entity);
-        //         //return Ok(await _service.GetAll());
-        //     }
-        //     catch (System.Exception ex)
-        //     {
-        //         return this.StatusCode(StatusCodes.Status500InternalServerError,
-        //          $"Banco dados Falhou: {ex.Message} ");
-        //     }
-        // }
-
+            var activeUsers = users.Where(user => user.IsActive == true).ToList();
+            
+            return Ok(activeUsers);
+        }
 
 
         [HttpPost("Register")]
@@ -182,9 +173,9 @@ namespace CredLend_API.Controllers
 
             entity.IsActive = false;
 
-            if (await _userRepository.SaveChangesAsync())
-                return Ok();
-            return BadRequest();
+           await _uow.SaveChangesAsync();
+
+           return Ok();
         }
 
     }

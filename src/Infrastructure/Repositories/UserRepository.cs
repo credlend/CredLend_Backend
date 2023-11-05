@@ -25,21 +25,5 @@ namespace Infrastructure.Repositories
          return await _context.Set<T>().FindAsync(id);
         
         }
-
-
-        public List<UserRole> GetUserRoles()
-        {
-            IQueryable<UserRole> entity =  _context.UserRole
-            .Include(p=>p.User)
-            .Include(p=>p.Role);
-           
-            return entity.ToList();
-        }
-
-        public async Task<bool> SaveChangesAsync()
-        {
-            return (await _context.SaveChangesAsync()) > 0;
-        }
-
     }
 }
