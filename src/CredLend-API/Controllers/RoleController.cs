@@ -36,7 +36,7 @@ namespace CredLend_API.Controllers
         }
 
         [HttpPost("CreateRole")]
-        [AllowAnonymous] 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRole(RoleDto roleDto)
         {
             try

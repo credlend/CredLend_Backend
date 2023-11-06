@@ -64,7 +64,6 @@ namespace Infrastructure.Migrations
                     TypePlan = table.Column<string>(type: "TEXT", nullable: false),
                     ValuePlan = table.Column<double>(type: "REAL", nullable: false),
                     TransactionWay = table.Column<string>(type: "TEXT", nullable: false),
-                    UserID = table.Column<string>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -82,7 +81,6 @@ namespace Infrastructure.Migrations
                     TypePlan = table.Column<string>(type: "TEXT", nullable: false),
                     ValuePlan = table.Column<double>(type: "REAL", nullable: false),
                     TransactionWay = table.Column<string>(type: "TEXT", nullable: false),
-                    UserID = table.Column<string>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20231105183324_InitialDBIdentity")]
-    partial class InitialDBIdentity
+    [Migration("20231106151818_UpdateDBIdentity")]
+    partial class UpdateDBIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,10 +87,6 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("ValuePlan")
                         .HasColumnType("REAL");
 
@@ -119,10 +115,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TypePlan")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserID")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

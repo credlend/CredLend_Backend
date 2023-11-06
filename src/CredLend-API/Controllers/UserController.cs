@@ -38,7 +38,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetUsers(){
             var users  = _userManager.Users.ToList();
 
@@ -164,7 +164,7 @@ namespace CredLend_API.Controllers
         }
 
         [HttpDelete("{Id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(string Id)
         {
             var entity = await _userRepository.GetById(Id);

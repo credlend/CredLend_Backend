@@ -84,10 +84,6 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserID")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("ValuePlan")
                         .HasColumnType("REAL");
 
@@ -116,10 +112,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TypePlan")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserID")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

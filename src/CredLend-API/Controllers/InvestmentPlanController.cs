@@ -7,6 +7,7 @@ using Domain.Core.Data;
 using Domain.Models.PlanModel;
 using Domain.ViewModels;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CredLend_API.Controllers
@@ -29,6 +30,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPlans()
         {
             var plans = await _investmentPlan.GetAll();
@@ -50,6 +52,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add([FromBody] InvestmentPlanViewModel request)
         {
             if (request == null)
@@ -79,19 +82,22 @@ namespace CredLend_API.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{InvestmentPlanId}")]
         public async Task<IActionResult> GetById(Guid InvestmentPlanId)
         {
-            var entity = _investmentPlan.GetById(InvestmentPlanId);
-            if (entity == null)
+            var investmentPlan = await _investmentPlan.GetById(InvestmentPlanId);
+            if (investmentPlan == null)
             {
-                return NotFound();
+                return NotFound("Plano não encontrado");
             }
-            return Ok(entity);
+
+            return Ok(investmentPlan);
         }
 
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put([FromBody] InvestmentPlanViewModel investmentPlan)
         {
             var entity = await _investmentPlan.GetById(investmentPlan.Id);
