@@ -1,12 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using AutoMapper;
 using Domain.Core.Data;
+using Domain.Models.Dto;
+using Domain.Models.Identity;
 using Domain.Models.UserModel;
-using Domain.ViewModels;
-using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CredLend_API.Controllers
 {
@@ -14,115 +18,167 @@ namespace CredLend_API.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository<User> _userRepository;
         private readonly IUnitOfWork _uow;
+        private readonly IMapper _mapper;
+        private readonly IConfiguration _config;
+        private readonly UserManager<User> _userManager;
 
-        public UserController(IUserRepository userRepository, IUnitOfWork uow)
+        public SignInManager<User> _SignInManager;
+
+        public UserController(IUserRepository<User> userRepository, IUnitOfWork uow, IMapper mapper, IConfiguration config, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userRepository = userRepository;
             _uow = uow;
+            _mapper = mapper;
+            _config = config;
+            _userManager = userManager;
+            _SignInManager = signInManager;
         }
+
 
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _userRepository.GetAll();
+        [AllowAnonymous]
+        public IActionResult GetUsers(){
+            var users  = _userManager.Users.ToList();
 
-            if (users == null)
-            {
-                return NotFound("Nenhum usuário encontrado");
-            }
-
-            return Ok(users);
+            var activeUsers = users.Where(user => user.IsActive == true).ToList();
+            
+            return Ok(activeUsers);
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] UserViewModel request)
+        [HttpPost("Register")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register(UserDto userDto)
         {
-           
-            if(request == null){
-                return BadRequest("O objeto de solicitação é nulo");
+            try
+            {
+                var user = await _userManager.FindByNameAsync(userDto.UserName);
+
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        UserName = userDto.UserName,
+                        NormalizedEmail = userDto.Email,
+                        Email = userDto.Email,
+                        Name = userDto.Name,
+                        IsActive = true,
+                        BirthDate = userDto.BirthDate
+                    };
+
+
+                    var result = await _userManager.CreateAsync(
+                        user, userDto.Password
+                    );
+
+                    if (result.Succeeded)
+                    {
+                        var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == user.UserName.ToUpper());
+                        var token = GenerateJWToken(appUser).Result;
+                        return Ok(token);
+                    }
+
+                }
+
+                return Unauthorized();
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine("Erro ao salvar as alterações: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Exceção interna: " + ex.InnerException.Message);
+                }
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Error {ex.Message}");
             }
 
-            var user = new User
+
+        }
+
+        private async Task<string> GenerateJWToken(User user)
+        {
+            var claims = new List<Claim>
+           {
+            new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+            new Claim(ClaimTypes.Name,user.UserName)
+           };
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
             {
-                Id = Guid.NewGuid(),
-                Name = request.Name,
-                BirthDate = request.BirthDate,
-                IsAdm = request.IsAdm,
-                Email = request.Email,
-                Password = request.Password
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
             };
 
-            _userRepository.Add(user);
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-            var response = new UserViewModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                BirthDate = user.BirthDate,
-                IsAdm = user.IsAdm,
-                Email = user.Email,
-                Password = user.Password
-            };
+            var token = tokenHandler.CreateToken(tokenDescription);
 
-            await _uow.SaveChangesAsync();
-            return Ok(response);
+            return tokenHandler.WriteToken(token);
         }
 
-        [HttpGet("{UserId}")]
-        public IActionResult GetById(Guid UserId)
+
+        [HttpPost("Login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(UserLoginDto userLogin)
         {
-            var entity = _userRepository.GetById(UserId);
-            if (entity == null)
+            try
             {
-                return NotFound();
+                var user = await _userManager.FindByEmailAsync(userLogin.Email);
+
+                var result = await _SignInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
+
+                if (result.Succeeded)
+                {
+                    var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
+
+                    var userToReturn = _mapper.Map<UserLoginDto>(appUser);
+
+                    return Ok(new
+                    {
+                        token = GenerateJWToken(appUser).Result,
+                        user = appUser
+                    });
+                }
+
+                return Unauthorized();
             }
-            return Ok(entity);
+            catch (System.Exception ex)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Error {ex.Message}");
+            }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Put([FromBody] UserViewModel request)
+        [HttpDelete("{Id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(string Id)
         {
-            var entity = _userRepository.GetById(request.Id);
-
-            if (request.Id != entity.Id)
-            {
-                return BadRequest();
-            }
+            var entity = await _userRepository.GetById(Id);
 
             if (entity == null) return NotFound();
 
+            entity.IsActive = false;
 
+           await _uow.SaveChangesAsync();
 
-            entity.Name = request.Name;
-            entity.BirthDate = request.BirthDate;
-            entity.IsAdm = request.IsAdm;
-            entity.Email = request.Email;
-            entity.Password = request.Password;
-
-
-            _userRepository.Update(entity);
-            await _uow.SaveChangesAsync();
-            return Ok(entity);
-        }
-
-        [HttpDelete("{UserId}")]
-
-        public async Task<IActionResult> Delete(Guid UserId)
-        {
-            var entity = _userRepository.GetById(UserId);
-
-            if (entity == null)
-            {
-                return BadRequest();
-            }
-
-            _userRepository.Delete(entity);
-            await _uow.SaveChangesAsync();
-            return Ok(entity);
+           return Ok();
         }
 
     }
+
+
 }

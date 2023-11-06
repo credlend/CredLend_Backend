@@ -8,6 +8,6 @@ namespace Domain.Models.PlanModel
 {
     public interface ILoanPlanRepository : IRepository<LoanPlan, Guid>
     {
-        void Delete(LoanPlan loanPlan);
+        void SwitchLoanPlan(LoanPlan entity);
     }
 }

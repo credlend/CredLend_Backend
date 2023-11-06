@@ -2,22 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Models.Identity;
 using Domain.Models.UserModel;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Infrastructure.Repositories
 {
-    public class UserRepository: RepositoryBase<User, Guid>, IUserRepository
+     public class UserRepository<T> : IUserRepository<T> where T : class
     {
-        
-        public UserRepository(ApplicationDataContext applicationDataContext) : base(applicationDataContext)
+        private readonly ApplicationDataContext _context;
+
+        public UserRepository(ApplicationDataContext context)
         {
+            _context = context;
         }
 
-        public void Delete(User user)
+        public async Task<T> GetById(string id)
         {
-            
-            _entity.Remove(user);
+        
+         return await _context.Set<T>().FindAsync(id);
+        
         }
     }
 }

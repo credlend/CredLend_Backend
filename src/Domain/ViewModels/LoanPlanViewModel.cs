@@ -8,6 +8,6 @@ namespace Domain.ViewModels
     public class LoanPlanViewModel : PlanViewModel
     {
         public DateTime PaymentTerm { get; set; }
-        public float InterestRate { get; set; }
+        public double InterestRate { get; set; }
     }
 }
