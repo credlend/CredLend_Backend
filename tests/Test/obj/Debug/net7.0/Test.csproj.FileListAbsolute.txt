@@ -9,3 +9,14 @@ C:\Arquivos\Projeto Integrador\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.dl
 C:\Arquivos\Projeto Integrador\CredLend_Back\tests\Test\obj\Debug\net7.0\refint\Test.dll
 C:\Arquivos\Projeto Integrador\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.pdb
 C:\Arquivos\Projeto Integrador\CredLend_Back\tests\Test\obj\Debug\net7.0\ref\Test.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\bin\Debug\net7.0\Test.deps.json
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\bin\Debug\net7.0\Test.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\bin\Debug\net7.0\Test.pdb
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.AssemblyInfoInputs.cache
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.AssemblyInfo.cs
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.csproj.CoreCompileInputs.cache
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\refint\Test.dll
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\Test.pdb
+C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\tests\Test\obj\Debug\net7.0\ref\Test.dll

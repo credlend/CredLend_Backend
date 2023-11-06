@@ -40,8 +40,8 @@ namespace CredLend_API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] UserViewModel request)
         {
-            if (request == null)
-            {
+           
+            if(request == null){
                 return BadRequest("O objeto de solicitação é nulo");
             }
 
@@ -52,22 +52,19 @@ namespace CredLend_API.Controllers
                 BirthDate = request.BirthDate,
                 IsAdm = request.IsAdm,
                 Email = request.Email,
-                Password = request.Password,
-                BankAccount = request.BankAccount,
-                AgencyNumber = request.AgencyNumber
+                Password = request.Password
             };
 
             _userRepository.Add(user);
 
             var response = new UserViewModel
             {
+                Id = user.Id,
                 Name = user.Name,
                 BirthDate = user.BirthDate,
                 IsAdm = user.IsAdm,
                 Email = user.Email,
-                Password = user.Password,
-                BankAccount = user.BankAccount,
-                AgencyNumber = user.AgencyNumber
+                Password = user.Password
             };
 
             await _uow.SaveChangesAsync();
@@ -88,11 +85,6 @@ namespace CredLend_API.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] UserViewModel request)
         {
-
-            // _userRepository.Update(user);
-            // await _uow.SaveChangesAsync();
-            // return NoContent();
-
             var entity = _userRepository.GetById(request.Id);
 
             if (request.Id != entity.Id)
@@ -109,8 +101,6 @@ namespace CredLend_API.Controllers
             entity.IsAdm = request.IsAdm;
             entity.Email = request.Email;
             entity.Password = request.Password;
-            entity.BankAccount = request.BankAccount;
-            entity.AgencyNumber = request.AgencyNumber;
 
 
             _userRepository.Update(entity);

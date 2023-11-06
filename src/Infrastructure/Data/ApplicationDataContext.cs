@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Core.Data;
+using Domain.Models.PlanModel;
 using Domain.Models.UserModel;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,8 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<LoanPlan> LoanPlan { get; set; }
+        public DbSet<InvestmentPlan> InvestmentPlan { get; set; }
     }
 }

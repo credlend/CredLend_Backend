@@ -17,21 +17,73 @@ namespace Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("Domain.Models.UserModel.User", b =>
+            modelBuilder.Entity("Domain.Models.PlanModel.InvestmentPlan", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AgencyNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("ReturnDeadLine")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("BankAccount")
+                    b.Property<float>("ReturnRate")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("TransactionWay")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("BankNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("TypePlan")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UserID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("ValuePlan")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InvestmentPlan");
+                });
+
+            modelBuilder.Entity("Domain.Models.PlanModel.LoanPlan", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("InterestRate")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("PaymentTerm")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TransactionWay")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TypePlan")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("UserID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("ValuePlan")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LoanPlan");
+                });
+
+            modelBuilder.Entity("Domain.Models.UserModel.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("TEXT");
@@ -53,7 +105,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

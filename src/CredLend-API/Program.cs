@@ -1,4 +1,5 @@
 using Domain.Core.Data;
+using Domain.Models.PlanModel;
 using Domain.Models.UserModel;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<ApplicationDataContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultContext")));
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();
+builder.Services.AddScoped<IInventmentPlanRepository, InvestmentPlanRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
