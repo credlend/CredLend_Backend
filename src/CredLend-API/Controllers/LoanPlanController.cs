@@ -6,6 +6,7 @@ using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.PlanModel;
 using Domain.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CredLend_API.Controllers
@@ -27,6 +28,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllPlans()
         {
             var plans = await _loanPlanRepository.GetAll();
@@ -47,6 +49,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add([FromBody] LoanPlanViewModel request)
         {
             if (request == null)
@@ -76,19 +79,22 @@ namespace CredLend_API.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{LoanPlanId}")]
-         public async Task<IActionResult> GetById(Guid LoanPlanId)
+        public async Task<IActionResult> GetById(Guid LoanPlanId)
         {
-            var entity = _loanPlanRepository.GetById(LoanPlanId);
-            if (entity == null)
+            var loanPlan = await _loanPlanRepository.GetById(LoanPlanId);
+            if (loanPlan == null)
             {
-                return NotFound();
+                return NotFound("Plano não encontrado");
             }
-            return Ok(entity);
+
+            return Ok(loanPlan);
         }
 
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put([FromBody] LoanPlanViewModel loanPlan)
         {
 
@@ -109,6 +115,7 @@ namespace CredLend_API.Controllers
         }
 
         [HttpPut("{LoanPlanId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SwitchLoanPlan(Guid LoanPlanId){
             var existingPlan = await _loanPlanRepository.GetById(LoanPlanId);
 

@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
             return _entity;
         }
 
-         public async Task<TEntity> GetById(TKey id)
+        public async Task<TEntity> GetById(TKey id)
         {
             return await _entity.FindAsync(id);
         }
