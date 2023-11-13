@@ -11,7 +11,6 @@ namespace Domain.Models.PlanModel
         public string TypePlan { get; set; }
         public double ValuePlan { get; set; }
         public string TransactionWay { get; set; }
-        public string UserID { get; set; }
         public bool IsActive { get; set; }
     }
 }
