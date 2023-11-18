@@ -37,9 +37,18 @@ namespace CredLend_API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("AllUsers")]
         [Authorize(Roles = "Admin")]
-        public IActionResult GetUsers(){
+        public IActionResult GetAllUsers()
+        {
+            var allUsers = _userManager.Users.ToList();
+            return Ok(allUsers);
+        }
+
+
+        [HttpGet("ActiveUsers")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult GetActiveUsers(){
             var users  = _userManager.Users.ToList();
 
             var activeUsers = users.Where(user => user.IsActive == true).ToList();
@@ -63,7 +72,7 @@ namespace CredLend_API.Controllers
                         UserName = userDto.UserName,
                         NormalizedEmail = userDto.Email,
                         Email = userDto.Email,
-                        Name = userDto.Name,
+                        CPF = userDto.CPF,
                         IsActive = true,
                         BirthDate = userDto.BirthDate
                     };
@@ -139,22 +148,28 @@ namespace CredLend_API.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(userLogin.Email);
 
-                var result = await _SignInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
-
-                if (result.Succeeded)
+                if(user.IsActive)
                 {
-                    var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
+                    var result = await _SignInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
 
-                    var userToReturn = _mapper.Map<UserLoginDto>(appUser);
-
-                    return Ok(new
+                    if (result.Succeeded)
                     {
-                        token = GenerateJWToken(appUser).Result,
-                        user = appUser
-                    });
-                }
+                        var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
 
-                return Unauthorized();
+                        var userToReturn = _mapper.Map<UserLoginDto>(appUser);
+
+                        return Ok(new
+                        {
+                            token = GenerateJWToken(appUser).Result,
+                            user = appUser
+                        });
+                    }
+
+                    return Unauthorized();
+                } else
+                {
+                    return NotFound("Usuário não encontrado!");
+                }
             }
             catch (System.Exception ex)
             {
@@ -163,11 +178,25 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpDelete("{Id}")]
-        [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> Delete(string Id)
+
+        /*[Authorize(Roles = "Admin")]
+        [HttpGet("{UserId}")]
+        public async Task<IActionResult> GetById(string UserId)
         {
-            var entity = await _userRepository.GetById(Id);
+            var user = await _userRepository.GetById(UserId);
+            if (user == null)
+            {
+                return NotFound("Usuário não encontrado");
+            }
+
+            return Ok(user);
+        }*/
+
+        [HttpDelete("{UserId}")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> Delete(string UserId)
+        {
+            var entity = await _userRepository.GetById(UserId);
 
             if (entity == null) return NotFound();
 

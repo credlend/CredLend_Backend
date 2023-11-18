@@ -72,7 +72,7 @@ namespace CredLend_API.Controllers
                 }
             }
 
-            _loanPlanRepository.Add(loanPlan);
+            _loanPlanRepository.Add(loanPlan, loanPlan.Id);
 
             await _uow.SaveChangesAsync();
             return Ok(loanPlan);

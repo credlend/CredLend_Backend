@@ -8,8 +8,11 @@ namespace Domain.Models.Dto
 {
     public class UserDto
     {
+       
         public string UserName { get; set; }
-        public string Name { get; set; }
+       
+       public string CPF { get; set; }
+
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
 

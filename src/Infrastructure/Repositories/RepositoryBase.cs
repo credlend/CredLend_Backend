@@ -20,9 +20,11 @@ namespace Infrastructure.Repositories
             _entity = _applicationDataContext.Set<TEntity>();
         }
 
-        public void Add(TEntity entity)
+        public Task<TEntity> Add(TEntity entity, TKey id)
         {
             _entity.Add(entity);
+            var selectedEntity = GetById(id);
+            return selectedEntity;
         }
 
         public async Task<IQueryable<TEntity>> GetAll()
