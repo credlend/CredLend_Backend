@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDataContext))]
-    [Migration("20231118183606_InitialDBIdentity")]
+    [Migration("20231119165113_InitialDBIdentity")]
     partial class InitialDBIdentity
     {
         /// <inheritdoc />
@@ -138,6 +138,10 @@ namespace Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CompleteName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

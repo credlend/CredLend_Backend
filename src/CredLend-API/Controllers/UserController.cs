@@ -72,9 +72,10 @@ namespace CredLend_API.Controllers
                         UserName = userDto.UserName,
                         NormalizedEmail = userDto.Email,
                         Email = userDto.Email,
+                        CompleteName = userDto.CompleteName,
                         CPF = userDto.CPF,
-                        IsActive = true,
-                        BirthDate = userDto.BirthDate
+                        BirthDate = userDto.BirthDate,
+                        IsActive = true
                     };
 
 
