@@ -5,23 +5,20 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{888BFE88-F916-4343-87B5-051977242221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredLend-API", "src\CredLend-API\CredLend-API.csproj", "{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend-API", "src\CredLend-API\CredLend-API.csproj", "{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{00F18971-3069-435F-BB28-B3C7B835C1F1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E070287F-F65F-4245-9589-917971117A13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "tests\Test\Test.csproj", "{800A5CCC-9ED0-45A2-875C-CFAD5D214B62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredLend.Tests", "tests\CredLend.Tests\CredLend.Tests.csproj", "{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,15 +33,25 @@ Global
 		{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{800A5CCC-9ED0-45A2-875C-CFAD5D214B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{800A5CCC-9ED0-45A2-875C-CFAD5D214B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{800A5CCC-9ED0-45A2-875C-CFAD5D214B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{800A5CCC-9ED0-45A2-875C-CFAD5D214B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B87997B-3E55-4B47-8B31-F2D24522313A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B87997B-3E55-4B47-8B31-F2D24522313A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B87997B-3E55-4B47-8B31-F2D24522313A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B87997B-3E55-4B47-8B31-F2D24522313A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1} = {888BFE88-F916-4343-87B5-051977242221}
 		{E376AB0E-E68A-4B56-936E-70C143AAAC53} = {888BFE88-F916-4343-87B5-051977242221}
 		{CF602FEC-E8E5-4C16-AF6E-4055658A85AF} = {888BFE88-F916-4343-87B5-051977242221}
-		{800A5CCC-9ED0-45A2-875C-CFAD5D214B62} = {00F18971-3069-435F-BB28-B3C7B835C1F1}
+		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96} = {E070287F-F65F-4245-9589-917971117A13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5227028D-B4AA-439D-A886-7009DC573C98}
 	EndGlobalSection
 EndGlobal

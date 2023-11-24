@@ -14,9 +14,9 @@ namespace Infrastructure.Repositories
         {
         }
 
-        public void Delete(LoanPlan loanPlan)
+        public void SwitchLoanPlan(LoanPlan entity)
         {
-            throw new NotImplementedException();
+            _entity.Update(entity);
         }
     }
 }

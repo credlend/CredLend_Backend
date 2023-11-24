@@ -15,6 +15,23 @@ C:\Arquivos\Projeto Integrador\CredLend_Back\src\Infrastructure\obj\Debug\net7.0
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Arquivos\Projeto Integrador\CredLend_Back\src\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Domain.dll
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\bin\Debug\net7.0\Domain.pdb
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+C:\Arquivos\Projeto Integrador\CredLend_Back_Copia\src\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Infrastructure\bin\Debug\net7.0\Infrastructure.dll

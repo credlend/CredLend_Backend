@@ -8,6 +8,6 @@ namespace Domain.Models.PlanModel
     public class LoanPlan : Plan
     {
         public DateTime PaymentTerm { get; set; }
-        public float InterestRate { get; set; }
+        public double InterestRate { get; set; }
     }
 }
