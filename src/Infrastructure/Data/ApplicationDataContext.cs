@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Core.Data;
 using Domain.Models.Identity;
+using Domain.Models.OperationsModel;
 using Domain.Models.PlanModel;
 using Domain.Models.UserModel;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +26,8 @@ namespace Infrastructure.Data
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<LoanPlan> LoanPlan { get; set; }
         public DbSet<InvestmentPlan> InvestmentPlan { get; set; }
+        public DbSet<OperationsLoanPlan> OperationsLoanPlan { get; set; }
+        public DbSet<OperationsInvestmentPlan> OperationsInvestmentPlan { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

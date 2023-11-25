@@ -180,8 +180,8 @@ namespace CredLend_API.Controllers
         }
 
 
-        /*[Authorize(Roles = "Admin")]
         [HttpGet("{UserId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetById(string UserId)
         {
             var user = await _userRepository.GetById(UserId);
@@ -191,7 +191,7 @@ namespace CredLend_API.Controllers
             }
 
             return Ok(user);
-        }*/
+        }
 
         [HttpDelete("{UserId}")]
         [Authorize(Roles = "Admin, User")]
