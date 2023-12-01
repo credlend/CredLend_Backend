@@ -13,9 +13,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class ApplicationDataContext : IdentityDbContext<User, Role,string,
-            IdentityUserClaim<string>,UserRole,IdentityUserLogin<string>,
-            IdentityRoleClaim<string>,IdentityUserToken<string>>,IUnitOfWork
+    public class ApplicationDataContext : IdentityDbContext<User, Role, string,
+            IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
+            IdentityRoleClaim<string>, IdentityUserToken<string>>, IUnitOfWork
     {
         public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options)
         {

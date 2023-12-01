@@ -8,7 +8,6 @@ namespace Domain.ViewModels
     public class PlanViewModel
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string TypePlan { get; set; }
         public double ValuePlan { get; set; }
         public string TransactionWay { get; set; }
         public bool IsActive { get; set; }
