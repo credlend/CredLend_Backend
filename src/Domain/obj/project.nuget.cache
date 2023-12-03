@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jEIHVefv2By6hIHvyvJ/iHKP+axysIMGKw5Uz25m22uyq7hfKO0CF84Hx1NvecAp4XP6Xa1SZYNAfTScF6r5kA==",
+  "dgSpecHash": "es+cmYPQ4NyYobH9t5QxFCblbS6uSz86T7tc8yuU1inSylNqJZQWWkrf8kV18Yd6THjkepBz/x6CEkqGrLhNSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.10\\microsoft.aspnetcore.cryptography.internal.7.0.10.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.10\\microsoft.aspnetcore.cryptography.keyderivation.7.0.10.nupkg.sha512",

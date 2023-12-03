@@ -2,6 +2,7 @@ using System.Text;
 using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.Identity;
+using Domain.Models.OperationsModel;
 using Domain.Models.PlanModel;
 using Domain.Models.RoleModel;
 using Domain.Models.UserModel;
@@ -57,6 +58,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ApplicationDataContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultContext")));
 
+builder.Services.AddScoped<IOperationsLoanPlanRepository, OperationsLoanPlanRepository>();
+builder.Services.AddScoped<IOperationsInvestmentPlanRepository, OperationsInvestmentPlanRepository>();
 builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();
 builder.Services.AddScoped<IInventmentPlanRepository, InvestmentPlanRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

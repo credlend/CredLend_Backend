@@ -30,7 +30,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetAllPlans()
         {
             var plans = await _investmentPlan.GetAll();
@@ -62,18 +62,18 @@ namespace CredLend_API.Controllers
 
             var investmentPlan = _mapper.Map<InvestmentPlan>(request);
 
-            var listInvestmentPlan = await _investmentPlan.GetAll();
+            // var listInvestmentPlan = await _investmentPlan.GetAll();
 
-            listInvestmentPlan.ToList();
+            // listInvestmentPlan.ToList();
 
-            foreach (var item in listInvestmentPlan)
-            {
-                bool verifica = investmentPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
-                if (verifica)
-                {
-                    return BadRequest("Este plano já existe no banco de dados");
-                }
-            }
+            // foreach (var item in listInvestmentPlan)
+            // {
+            //     bool verifica = investmentPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
+            //     if (verifica)
+            //     {
+            //         return BadRequest("Este plano já existe no banco de dados");
+            //     }
+            // }
 
             _investmentPlan.Add(investmentPlan, investmentPlan.Id);
 
@@ -82,8 +82,8 @@ namespace CredLend_API.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
         [HttpGet("{InvestmentPlanId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetById(Guid InvestmentPlanId)
         {
             var investmentPlan = await _investmentPlan.GetById(InvestmentPlanId);

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tmvbmUIWl7N03KNgMaKsX8d4w1fjKYErvNcA9JKoJB4NukMkTm4A82AXCXcmWRJ0nrj3Z4kYOyOdo01byqL4NQ==",
+  "dgSpecHash": "ldzcEqC2JGBcRR8iL8573Hwx3qinmpHtcYWEv0auRLYTkrYui5xrdoGj1KsnS3DqJ6zHV0YF1LsavSGcA4sRnQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\CredLend-API\\CredLend-API.csproj",
+  "projectFilePath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gussi\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\gussi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
