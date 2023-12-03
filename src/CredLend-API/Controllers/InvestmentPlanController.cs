@@ -75,7 +75,7 @@ namespace CredLend_API.Controllers
                 }
             }
 
-            _investmentPlan.Add(investmentPlan);
+            _investmentPlan.Add(investmentPlan, investmentPlan.Id);
 
             await _uow.SaveChangesAsync();
             return Ok(investmentPlan);
