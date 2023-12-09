@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Core.Data;
 using Domain.Models.Identity;
+using Domain.Models.OperationsModel;
 using Domain.Models.PlanModel;
 using Domain.Models.UserModel;
 using Microsoft.AspNetCore.Identity;
@@ -12,9 +13,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
-    public class ApplicationDataContext : IdentityDbContext<User, Role,string,
-            IdentityUserClaim<string>,UserRole,IdentityUserLogin<string>,
-            IdentityRoleClaim<string>,IdentityUserToken<string>>,IUnitOfWork
+    public class ApplicationDataContext : IdentityDbContext<User, Role, string,
+            IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
+            IdentityRoleClaim<string>, IdentityUserToken<string>>, IUnitOfWork
     {
         public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options)
         {
@@ -25,6 +26,8 @@ namespace Infrastructure.Data
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<LoanPlan> LoanPlan { get; set; }
         public DbSet<InvestmentPlan> InvestmentPlan { get; set; }
+        public DbSet<OperationsLoanPlan> OperationsLoanPlan { get; set; }
+        public DbSet<OperationsInvestmentPlan> OperationsInvestmentPlan { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -7976,11 +7976,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
       "projectName": "CredLend.Tests",
-      "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
+      "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
       "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\tests\\CredLend.Tests\\obj\\",
+      "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8001,11 +8001,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\CredLend-API\\CredLend-API.csproj": {
-              "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\CredLend-API\\CredLend-API.csproj"
+            "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
+              "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj"
             },
-            "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Back\\src\\Domain\\Domain.csproj"
+            "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj"
             }
           }
         }

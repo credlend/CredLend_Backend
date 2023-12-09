@@ -28,7 +28,7 @@ namespace CredLend_API.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetAllPlans()
         {
             var plans = await _loanPlanRepository.GetAll();
@@ -59,18 +59,18 @@ namespace CredLend_API.Controllers
 
             var loanPlan = _mapper.Map<LoanPlan>(request);
 
-            var listLoanPlan = await _loanPlanRepository.GetAll();
+            // var listLoanPlan = await _loanPlanRepository.GetAll();
 
-            listLoanPlan.ToList();
+            // listLoanPlan.ToList();
 
-            foreach (var item in listLoanPlan)
-            {
-                bool verifica = loanPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
-                if (verifica)
-                {
-                    return BadRequest("Este plano já existe no banco de dados");
-                }
-            }
+            // foreach (var item in listLoanPlan)
+            // {
+            //     bool verifica = loanPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
+            //     if (verifica)
+            //     {
+            //         return BadRequest("Este plano já existe no banco de dados");
+            //     }
+            // }
 
             _loanPlanRepository.Add(loanPlan, loanPlan.Id);
 
@@ -79,8 +79,9 @@ namespace CredLend_API.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        
         [HttpGet("{LoanPlanId}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetById(Guid LoanPlanId)
         {
             var loanPlan = await _loanPlanRepository.GetById(LoanPlanId);

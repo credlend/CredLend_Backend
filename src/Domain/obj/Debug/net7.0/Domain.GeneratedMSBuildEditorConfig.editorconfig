@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Domain
-build_property.ProjectDir = C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Back\src\Domain\
+build_property.ProjectDir = C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Backend\src\Domain\
