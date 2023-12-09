@@ -37,7 +37,7 @@ namespace CredLend.Tests.Controllers
             var result = await _controller.GetById(id);
 
             //Assert
-           Assert.IsType<OkResult>(result);
+           Assert.IsType<OkObjectResult>(result);
         }
     }
 }
