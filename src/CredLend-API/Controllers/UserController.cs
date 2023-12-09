@@ -185,11 +185,6 @@ namespace CredLend_API.Controllers
         public async Task<IActionResult> GetById(string UserId)
         {
             var user = await _userRepository.GetById(UserId);
-            if (user == null)
-            {
-                return NotFound("Usuário não encontrado");
-            }
-
             return Ok(user);
         }
 
