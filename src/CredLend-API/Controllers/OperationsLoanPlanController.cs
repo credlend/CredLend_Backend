@@ -34,33 +34,47 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Add([FromBody] OperationsLoanPlanViewModel request)
         {
-            if (request == null)
+            try
             {
-                return BadRequest("O objeto de solicitação é nulo");
+                if (request == null)
+                {
+                    return BadRequest("O objeto de solicitação é nulo");
+                }
+
+                var opLoanPlan = _mapper.Map<OperationsLoanPlan>(request);
+
+                _operationsLoanPlan.Add(opLoanPlan, opLoanPlan.Id);
+
+                await _uow.SaveChangesAsync();
+                return Ok(opLoanPlan);
             }
-
-            var opLoanPlan = _mapper.Map<OperationsLoanPlan>(request);
-
-            _operationsLoanPlan.Add(opLoanPlan, opLoanPlan.Id);
-
-            await _uow.SaveChangesAsync();
-            return Ok(opLoanPlan);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
-        [HttpDelete("{UserId}")]
+        [HttpDelete("{OperationId}")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(Guid UserId)
         {
-            var entity = await _operationsLoanPlan.GetById(UserId);
+            try
+            {
+                var entity = await _operationsLoanPlan.GetById(UserId);
 
-            if (entity == null) return NotFound();
+                if (entity == null) return NotFound();
 
-            entity.IsActive = false;
+                entity.IsActive = false;
 
-            await _uow.SaveChangesAsync();
+                await _uow.SaveChangesAsync();
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
     }
 }

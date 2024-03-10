@@ -31,8 +31,21 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Get()
         {
-            var entity = await _roleRepository.GetAll();
-            return Ok(entity);
+            try
+            {
+                var entity = await _roleRepository.GetAll();
+
+                if (entity == null)
+                {
+                    return NotFound("Nenhum papel encontrado");
+                }
+
+                return Ok(entity);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
         [HttpPost("CreateRole")]

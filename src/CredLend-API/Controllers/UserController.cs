@@ -41,19 +41,45 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult GetAllUsers()
         {
-            var allUsers = _userManager.Users.ToList();
-            return Ok(allUsers);
+            try
+            {
+                var allUsers = _userManager.Users.ToList();
+
+                if (allUsers == null)
+                {
+                    return NotFound("Nenhum usuário encontrado");
+                }
+
+                return Ok(allUsers);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
         [HttpGet("ActiveUsers")]
         [Authorize(Roles = "Admin")]
-        public IActionResult GetActiveUsers(){
-            var users  = _userManager.Users.ToList();
+        public IActionResult GetActiveUsers()
+        {
+            try
+            {
+                var users = _userManager.Users.ToList();
 
-            var activeUsers = users.Where(user => user.IsActive == true).ToList();
-            
-            return Ok(activeUsers);
+                var activeUsers = users.Where(user => user.IsActive == true).ToList();
+
+                if (activeUsers == null)
+                {
+                    return NotFound("Nenhum usuário ativo encontrado");
+                }
+
+                return Ok(activeUsers);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
@@ -149,7 +175,7 @@ namespace CredLend_API.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(userLogin.Email);
 
-                if(user.IsActive)
+                if (user.IsActive)
                 {
                     var result = await _SignInManager.CheckPasswordSignInAsync(user, userLogin.Password, false);
 
@@ -167,7 +193,8 @@ namespace CredLend_API.Controllers
                     }
 
                     return Unauthorized();
-                } else
+                }
+                else
                 {
                     return NotFound("Usuário não encontrado!");
                 }
@@ -184,23 +211,43 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetById(string UserId)
         {
-            var user = await _userRepository.GetById(UserId);
-            return Ok(user);
+            try
+            {
+                var user = await _userRepository.GetById(UserId);
+
+                if (user == null)
+                {
+                    return NotFound("Usuário não encontrado");
+                }
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
         [HttpDelete("{UserId}")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(string UserId)
         {
-            var entity = await _userRepository.GetById(UserId);
+            try
+            {
+                var entity = await _userRepository.GetById(UserId);
 
-            if (entity == null) return NotFound();
+                if (entity == null) return NotFound();
 
-            entity.IsActive = false;
+                entity.IsActive = false;
 
-           await _uow.SaveChangesAsync();
+                await _uow.SaveChangesAsync();
 
-           return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
     }
