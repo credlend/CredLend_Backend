@@ -33,21 +33,23 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetAllPlans()
         {
-            var plans = await _investmentPlan.GetAll();
-
-            if (plans == null)
+            try
             {
-                return NotFound("Nenhum palno de investimento cadatrado");
+                var plans = await _investmentPlan.GetAll();
+
+                if (plans == null)
+                {
+                    return NotFound("Nenhum palno de investimento cadatrado");
+                }
+
+                var activeInvestmentPlan = plans.Where(p => p.IsActive == true).ToList();
+
+                return Ok(activeInvestmentPlan);
             }
-
-            var activeInvestmentPlan = plans.Where(p => p.IsActive == true).ToList();
-
-            if (activeInvestmentPlan.Count == 0)
+            catch (Exception ex)
             {
-                return NotFound("Nenhum plano ativo encontrado");
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
-
-            return Ok(activeInvestmentPlan);
         }
 
 
@@ -55,17 +57,24 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add([FromBody] InvestmentPlanViewModel request)
         {
-            if (request == null)
+            try
             {
-                return BadRequest("O objeto de solicitação é nulo");
+                if (request == null)
+                {
+                    return BadRequest("O objeto de solicitação é nulo");
+                }
+
+                var investmentPlan = _mapper.Map<InvestmentPlan>(request);
+
+                _investmentPlan.Add(investmentPlan, investmentPlan.Id);
+
+                await _uow.SaveChangesAsync();
+                return Ok(investmentPlan);
             }
-
-            var investmentPlan = _mapper.Map<InvestmentPlan>(request);
-
-            _investmentPlan.Add(investmentPlan, investmentPlan.Id);
-
-            await _uow.SaveChangesAsync();
-            return Ok(investmentPlan);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
@@ -73,8 +82,21 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetById(Guid InvestmentPlanId)
         {
-            var investmentPlan = await _investmentPlan.GetById(InvestmentPlanId);
-            return Ok(investmentPlan);
+            try
+            {
+                var investmentPlan = await _investmentPlan.GetById(InvestmentPlanId);
+
+                if (investmentPlan == null)
+                {
+                    return BadRequest("Plano não encontrado");
+                }
+
+                return Ok(investmentPlan);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
@@ -82,39 +104,58 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Put([FromBody] InvestmentPlanViewModel investmentPlan)
         {
-            var entity = await _investmentPlan.GetById(investmentPlan.Id);
-
-            if (investmentPlan.Id != entity.Id)
+            try
             {
-                return BadRequest();
+                var entity = await _investmentPlan.GetById(investmentPlan.Id);
+
+                if (investmentPlan.Id != entity.Id)
+                {
+                    return BadRequest();
+                }
+
+                if (entity == null) return NotFound();
+
+                _mapper.Map(investmentPlan, entity);
+
+                _investmentPlan.Update(entity);
+                await _uow.SaveChangesAsync();
+                return Ok(entity);
             }
-
-            if (entity == null) return NotFound();
-
-            _mapper.Map(investmentPlan, entity);
-
-            _investmentPlan.Update(entity);
-            await _uow.SaveChangesAsync();
-            return Ok(entity);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
         [HttpPut("{InvestmentPlanId}")]
-        public async Task<IActionResult> SwitchInvestmentPlan(Guid InvestmentPlanId){
-            var existingPlan = await _investmentPlan.GetById(InvestmentPlanId);
+        public async Task<IActionResult> SwitchInvestmentPlan(Guid InvestmentPlanId)
+        {
+            try
+            {
+                var existingPlan = await _investmentPlan.GetById(InvestmentPlanId);
 
-            if(InvestmentPlanId != existingPlan.Id) {
-                return BadRequest();
+                if (InvestmentPlanId != existingPlan.Id)
+                {
+                    return BadRequest();
+                }
+
+                if (existingPlan.IsActive)
+                {
+                    existingPlan.IsActive = false;
+                }
+                else
+                {
+                    existingPlan.IsActive = true;
+                }
+
+                _investmentPlan.SwitchInvestmentPlan(existingPlan);
+                await _uow.SaveChangesAsync();
+                return Ok(existingPlan);
             }
-
-            if(existingPlan.IsActive) {
-                 existingPlan.IsActive = false;
-            } else {
-                existingPlan.IsActive = true;
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
-
-            _investmentPlan.SwitchInvestmentPlan(existingPlan);
-            await _uow.SaveChangesAsync();
-            return Ok(existingPlan);
         }
     }
 }

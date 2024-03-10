@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj": {}
+    "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
+    "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
+        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
         "projectName": "CredLend-API",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
-        "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\obj\\",
+        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
+        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gussi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,11 +32,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -45,6 +45,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -103,24 +108,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+    "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\obj\\",
+        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gussi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -141,6 +146,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -168,24 +178,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gussi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -200,8 +210,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -210,6 +220,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -257,24 +272,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj": {
+    "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
+        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
         "projectName": "CredLend.Tests",
-        "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
-        "packagesPath": "C:\\Users\\gussi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\tests\\CredLend.Tests\\obj\\",
+        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
+        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
+        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gussi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -289,11 +304,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj"
               },
-              "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\gussi\\OneDrive\\Área de Trabalho\\CredLend_Backend\\src\\Domain\\Domain.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -302,6 +317,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -347,7 +367,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

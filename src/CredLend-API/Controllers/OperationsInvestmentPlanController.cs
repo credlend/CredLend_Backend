@@ -32,7 +32,9 @@ namespace CredLend_API.Controllers
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Add([FromBody] OperationsInvestmentPlanViewModel request)
         {
-            if (request == null)
+            try
+            {
+                 if (request == null)
             {
                 return BadRequest("O objeto de solicitação é nulo");
             }
@@ -43,22 +45,34 @@ namespace CredLend_API.Controllers
 
             await _uow.SaveChangesAsync();
             return Ok(opInvestmentPlan);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
 
 
-        [HttpDelete("{UserId}")]
+        [HttpDelete("{OperationId}")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(Guid UserId)
         {
-            var entity = await _operationsInvestmentPlan.GetById(UserId);
+            try
+            {
+                var entity = await _operationsInvestmentPlan.GetById(UserId);
 
-            if (entity == null) return NotFound();
+                if (entity == null) return NotFound();
 
-            entity.IsActive = false;
+                entity.IsActive = false;
 
-            await _uow.SaveChangesAsync();
+                await _uow.SaveChangesAsync();
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
         }
     }
 }

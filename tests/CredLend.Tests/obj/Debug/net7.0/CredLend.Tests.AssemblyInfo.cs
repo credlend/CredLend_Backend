@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CredLend.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce0699288cbe0d5e26619b348ca51cbcfdbe6f00")]
 [assembly: System.Reflection.AssemblyProductAttribute("CredLend.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CredLend.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
