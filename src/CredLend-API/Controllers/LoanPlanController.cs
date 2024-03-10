@@ -59,19 +59,6 @@ namespace CredLend_API.Controllers
 
             var loanPlan = _mapper.Map<LoanPlan>(request);
 
-            // var listLoanPlan = await _loanPlanRepository.GetAll();
-
-            // listLoanPlan.ToList();
-
-            // foreach (var item in listLoanPlan)
-            // {
-            //     bool verifica = loanPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
-            //     if (verifica)
-            //     {
-            //         return BadRequest("Este plano já existe no banco de dados");
-            //     }
-            // }
-
             _loanPlanRepository.Add(loanPlan, loanPlan.Id);
 
             await _uow.SaveChangesAsync();
@@ -85,11 +72,6 @@ namespace CredLend_API.Controllers
         public async Task<IActionResult> GetById(Guid LoanPlanId)
         {
             var loanPlan = await _loanPlanRepository.GetById(LoanPlanId);
-            if (loanPlan == null)
-            {
-                return NotFound("Plano não encontrado");
-            }
-
             return Ok(loanPlan);
         }
 

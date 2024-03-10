@@ -28,18 +28,17 @@ namespace CredLend.Test.Data
                 LoanPlan entity = new()
                 {
                     Id = Guid.NewGuid(),
-                    TypePlan = "Loan",
                     ValuePlan = 900.00,
                     TransactionWay = "PIX",
                     IsActive = true,
-                    PaymentTerm = new DateTime(),
+                    PaymentTerm = DateTime.UtcNow,
                     InterestRate = 3
 
                 };
                 var result = await _loanPlanRepository.Add(entity, entity.Id);
                 await _unitOfWork.SaveChangesAsync();
                 Assert.NotNull(result);
-                Assert.Equal(entity.TypePlan, result.TypePlan);
+                Assert.Equal(entity.ValuePlan, result.ValuePlan);
                 Assert.False(result.Id == Guid.Empty);
             }
         }

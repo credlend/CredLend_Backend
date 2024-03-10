@@ -39,19 +39,6 @@ namespace CredLend_API.Controllers
 
             var opInvestmentPlan = _mapper.Map<OperationsInvestmentPlan>(request);
 
-            // var listOpInvestmentPlan = await _operationsInvestmentPlan.GetAll();
-
-            // listOpInvestmentPlan.ToList();
-
-            // foreach (var item in listOpInvestmentPlan)
-            // {
-            //     bool verifica = opLoanPlan.TypePlan.Contains(item.TypePlan, StringComparison.OrdinalIgnoreCase);
-            //     if (verifica)
-            //     {
-            //         return BadRequest("Este plano já existe no banco de dados");
-            //     }
-            // }
-
             _operationsInvestmentPlan.Add(opInvestmentPlan, opInvestmentPlan.Id);
 
             await _uow.SaveChangesAsync();
