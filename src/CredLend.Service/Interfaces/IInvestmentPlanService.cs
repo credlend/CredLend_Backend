@@ -12,7 +12,7 @@ namespace CredLend.Service.Interfaces
         Task<ICollection<InvestmentPlanDTO>> Get();
         Task<InvestmentPlanDTO> Get(Guid id);
         void Add(InvestmentPlanDTO dto);
-        void Update(Guid id, InvestmentPlanDTO dto);
+        void Update(InvestmentPlanDTO dto);
         void Delete(Guid id);
     }
 }

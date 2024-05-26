@@ -60,6 +60,7 @@ builder.Services.AddDbContext<ApplicationDataContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultContext")));
 
 builder.Services.AddScoped<IInvestmentPlanService, InvestmentPlanService>();
+builder.Services.AddScoped<ILoanPlanService, LoanPlanService>();
 builder.Services.AddScoped<IOperationsLoanPlanRepository, OperationsLoanPlanRepository>();
 builder.Services.AddScoped<IOperationsInvestmentPlanRepository, OperationsInvestmentPlanRepository>();
 builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();

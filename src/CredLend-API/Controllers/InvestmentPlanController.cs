@@ -69,7 +69,7 @@ namespace CredLend_API.Controllers
                     TransactionWay = response.TransactionWay,
                     ReturnDeadLine = response.ReturnDeadLine,
                     ReturnRate = response.ReturnRate,
-                    IsActive = response.IsActive,
+                    IsActive= response.IsActive
                 };
 
                 return Ok(investmentPlan);
@@ -96,8 +96,7 @@ namespace CredLend_API.Controllers
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
                     ReturnDeadLine = request.ReturnDeadLine,
-                    ReturnRate = request.ReturnRate,
-                    IsActive = request.IsActive
+                    ReturnRate = request.ReturnRate
                 };
 
                 _service.Add(investmentPlan);
@@ -128,15 +127,18 @@ namespace CredLend_API.Controllers
                     return BadRequest("O ID da solicitação não corresponde ao ID existente.");
                 }
 
-                entity.ValuePlan = investmentPlan.ValuePlan;
-                entity.TransactionWay = investmentPlan.TransactionWay;
-                entity.ReturnDeadLine = investmentPlan.ReturnDeadLine;
-                entity.ReturnRate = investmentPlan.ReturnRate;
-                entity.IsActive = investmentPlan.IsActive;
+                var investmentPlanDTO = new InvestmentPlanDTO
+                {
+                    Id = id,
+                    ValuePlan = investmentPlan.ValuePlan,
+                    TransactionWay = investmentPlan.TransactionWay,
+                    ReturnDeadLine = investmentPlan.ReturnDeadLine,
+                    ReturnRate = investmentPlan.ReturnRate
+                };
 
-                _service.Update(id, entity);
+                _service.Update(investmentPlanDTO);
 
-                return Ok(entity);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -159,7 +161,7 @@ namespace CredLend_API.Controllers
 
                 _service.Delete(id);
 
-                return Ok(entity);
+                return Ok();
             }
             catch (Exception ex)
             {

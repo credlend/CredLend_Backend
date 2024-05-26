@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CredLend.Domain.DTOs;
+using CredLend.Service.Interfaces;
 using Domain.Core.Data;
 using Domain.Models.PlanModel;
 using Domain.Requests;
@@ -16,17 +18,12 @@ namespace CredLend_API.Controllers
     [Route("api/v1/[controller]")]
     public class LoanPlanController : ControllerBase
     {
-        private readonly ILoanPlanRepository _loanPlanRepository;
-        private readonly IUnitOfWork _uow;
-        private readonly IMapper _mapper;
+        private readonly ILoanPlanService _service;
 
-        public LoanPlanController(ILoanPlanRepository loanPlanRepository, IUnitOfWork uow, IMapper mapper)
+        public LoanPlanController(ILoanPlanService service)
         {
-            _loanPlanRepository = loanPlanRepository;
-            _uow = uow;
-            _mapper = mapper;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
-
 
         [HttpGet]
         [Authorize(Roles = "Admin, User")]
@@ -34,7 +31,7 @@ namespace CredLend_API.Controllers
         {
             try
             {
-                var response = await _loanPlanRepository.GetAll();
+                var response = await _service.Get();
 
                 var plans = response.Select(response => new LoanPlanViewModel
                 {
@@ -44,16 +41,14 @@ namespace CredLend_API.Controllers
                     InterestRate = response.InterestRate,
                     PaymentTerm = response.PaymentTerm,
                     IsActive = response.IsActive
-                });
+                }).ToList();
 
-                if (plans == null)
+                if (plans.Count == 0)
                 {
-                    return NotFound("Nenhum palno de investimento cadatrado");
+                    return NotFound("Nenhum plano de investimento cadastrado");
                 }
 
-                var activeLoanPlan = plans.Where(p => p.IsActive == true).ToList();
-
-                return Ok(activeLoanPlan);
+                return Ok(plans);
             }
             catch (Exception ex)
             {
@@ -61,31 +56,30 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{id:Guid}")]
+        [HttpGet("{id:Guid}")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Get(Guid id)
         {
             try
             {
-                var response = await _loanPlanRepository.GetById(id);
+                var response = await _service.Get(id);
 
-                var loanPlan = new LoanPlanViewModel
-                {
-                    Id = response.Id,
-                    ValuePlan = response.ValuePlan,
-                    TransactionWay = response.TransactionWay,
-                    InterestRate= response.InterestRate,
-                    PaymentTerm= response.PaymentTerm,
-                    IsActive = response.IsActive
-                };
-
-                if (loanPlan == null)
+                if (response == null)
                 {
                     return NotFound("Plano não encontrado");
                 }
 
-                return Ok(loanPlan);
+                var investmentPlan = new LoanPlanViewModel
+                {
+                    Id = response.Id,
+                    ValuePlan = response.ValuePlan,
+                    TransactionWay = response.TransactionWay,
+                    PaymentTerm = response.PaymentTerm,
+                    InterestRate = response.InterestRate,
+                    IsActive = response.IsActive
+                };
+
+                return Ok(investmentPlan);
             }
             catch (Exception ex)
             {
@@ -95,7 +89,7 @@ namespace CredLend_API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Add([FromBody] LoanPlanRequest request)
+        public async Task<IActionResult> Add(LoanPlanRequest request)
         {
             try
             {
@@ -104,19 +98,17 @@ namespace CredLend_API.Controllers
                     return BadRequest("O objeto de solicitação é nulo");
                 }
 
-                var loanPlan = new LoanPlan
+                var investmentPlan = new LoanPlanDTO
                 {
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
                     InterestRate = request.InterestRate,
                     PaymentTerm = request.PaymentTerm,
-                    IsActive = request.IsActive
                 };
 
-                _loanPlanRepository.Add(loanPlan);
+                _service.Add(investmentPlan);
 
-                await _uow.SaveChangesAsync();
-                return Ok(loanPlan);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -124,31 +116,36 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id:Guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromBody] LoanPlanViewModel loanPlan)
+        public async Task<IActionResult> Update(Guid id, LoanPlanRequest loanPlan)
         {
             try
             {
-                var entity = await _loanPlanRepository.GetById(loanPlan.Id);
+                var entity = await _service.Get(id);
 
-                if (loanPlan.Id != entity.Id)
+                if (entity == null)
                 {
-                    return NotFound("O ID da solicitação não corresponde ao ID existente.");
+                    return NotFound("Plano de investimento não encontrado.");
                 }
 
-                if (loanPlan == null) return BadRequest();
+                if (id != entity.Id)
+                {
+                    return BadRequest("O ID da solicitação não corresponde ao ID existente.");
+                }
 
-                entity.Id = loanPlan.Id;
-                entity.ValuePlan = loanPlan.ValuePlan;
-                entity.TransactionWay = loanPlan.TransactionWay;
-                entity.InterestRate = loanPlan.InterestRate;
-                entity.PaymentTerm = loanPlan.PaymentTerm;
-                entity.IsActive = loanPlan.IsActive;
+                var investmentPlanDTO = new LoanPlanDTO
+                {
+                    Id = id,
+                    ValuePlan = loanPlan.ValuePlan,
+                    TransactionWay = loanPlan.TransactionWay,
+                    InterestRate = loanPlan.InterestRate,
+                    PaymentTerm = loanPlan.PaymentTerm
+                };
 
-                _loanPlanRepository.Update(entity);
-                await _uow.SaveChangesAsync();
-                return Ok(entity);
+                _service.Update(investmentPlanDTO);
+
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -156,31 +153,22 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("{id:Guid}/delete")]
+        [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid id)
         {
             try
             {
-                var existingPlan = await _loanPlanRepository.GetById(id);
+                var entity = await _service.Get(id);
 
-                if (id != existingPlan.Id)
+                if (entity == null)
                 {
-                    return NotFound("O ID da solicitação não corresponde ao ID existente.");
+                    return NotFound("Plano de investimento não encontrado.");
                 }
 
-                if (existingPlan.IsActive)
-                {
-                    existingPlan.IsActive = false;
-                }
-                else
-                {
-                    existingPlan.IsActive = true;
-                }
+                _service.Delete(id);
 
-                _loanPlanRepository.PatchLoanPlan(existingPlan);
-                await _uow.SaveChangesAsync();
-                return Ok(existingPlan);
+                return Ok();
             }
             catch (Exception ex)
             {

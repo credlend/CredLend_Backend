@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\CredLend.Domain.csproj" />
-    <ProjectReference Include="..\Infrastructure\CredLend.Infrastructure.csproj" />
+    <ProjectReference Include="..\CredLend.Domain\CredLend.Domain.csproj" />
+    <ProjectReference Include="..\CredLend.Infrastructure\CredLend.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

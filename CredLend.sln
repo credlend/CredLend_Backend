@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{888BFE88-F91
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.API", "src\CredLend-API\CredLend.API.csproj", "{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Domain", "src\Domain\CredLend.Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Domain", "src\CredLend.Domain\CredLend.Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Infrastructure", "src\Infrastructure\CredLend.Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Infrastructure", "src\CredLend.Infrastructure\CredLend.Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E070287F-F65F-4245-9589-917971117A13}"
 EndProject
