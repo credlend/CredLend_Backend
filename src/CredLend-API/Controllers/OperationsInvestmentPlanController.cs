@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.OperationsModel;
+using Domain.Requests;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CredLend_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class OperationsInvestmentPlanController : ControllerBase
     {
         private readonly IOperationsInvestmentPlanRepository _operationsInvestmentPlan;
@@ -30,21 +31,32 @@ namespace CredLend_API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> Add([FromBody] OperationsInvestmentPlanViewModel request)
+        public async Task<IActionResult> Add([FromBody] OperationsInvestmentPlanRequest request)
         {
             try
             {
-                 if (request == null)
-            {
-                return BadRequest("O objeto de solicitação é nulo");
-            }
+                if (request == null)
+                {
+                    return BadRequest("O objeto de solicitação é nulo");
+                }
 
-            var opInvestmentPlan = _mapper.Map<OperationsInvestmentPlan>(request);
+                var opInvestmentPlan = new OperationsInvestmentPlan
+                {
+                    ValuePlan = request.ValuePlan,
+                    TransactionWay = request.TransactionWay,
+                    UserName = request.UserName,
+                    Email = request.Email,
+                    OperationDate = request.OperationDate,
+                    IsActive = request.IsActive,
+                    UserID = request.UserID,
+                    ReturnRate = request.ReturnRate,
+                    ReturnDeadLine = request.ReturnDeadLine,
+                };
 
-            _operationsInvestmentPlan.Add(opInvestmentPlan, opInvestmentPlan.Id);
+                _operationsInvestmentPlan.Add(opInvestmentPlan);
 
-            await _uow.SaveChangesAsync();
-            return Ok(opInvestmentPlan);
+                await _uow.SaveChangesAsync();
+                return Ok(opInvestmentPlan);
             }
             catch (Exception ex)
             {
@@ -53,7 +65,8 @@ namespace CredLend_API.Controllers
         }
 
 
-        [HttpDelete("{OperationId}")]
+        [HttpDelete()]
+        [Route("{id:Guid}/delete")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Delete(Guid UserId)
         {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EF4jUA75WiTmeZYLff9qrBBcNC+OpKxhMDbODbaxSlRueN0I+Cb8nhQZ9xeXMn8KNrvycxBx6ElehzEzFAYq0A==",
+  "dgSpecHash": "Zk6pnyRnObY=",
   "success": true,
-  "projectFilePath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj",
+  "projectFilePath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leona\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

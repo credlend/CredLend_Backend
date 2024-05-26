@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.PlanModel;
+using Domain.Requests;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CredLend_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class LoanPlanController : ControllerBase
     {
         private readonly ILoanPlanRepository _loanPlanRepository;
@@ -29,15 +30,25 @@ namespace CredLend_API.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> GetAllPlans()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var plans = await _loanPlanRepository.GetAll();
+                var response = await _loanPlanRepository.GetAll();
+
+                var plans = response.Select(response => new LoanPlanViewModel
+                {
+                    Id = response.Id,
+                    ValuePlan = response.ValuePlan,
+                    TransactionWay = response.TransactionWay,
+                    InterestRate = response.InterestRate,
+                    PaymentTerm = response.PaymentTerm,
+                    IsActive = response.IsActive
+                });
 
                 if (plans == null)
                 {
-                    return NotFound("Nenhum palno de empréstimo cadatrado");
+                    return NotFound("Nenhum palno de investimento cadatrado");
                 }
 
                 var activeLoanPlan = plans.Where(p => p.IsActive == true).ToList();
@@ -50,10 +61,41 @@ namespace CredLend_API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{id:Guid}")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            try
+            {
+                var response = await _loanPlanRepository.GetById(id);
+
+                var loanPlan = new LoanPlanViewModel
+                {
+                    Id = response.Id,
+                    ValuePlan = response.ValuePlan,
+                    TransactionWay = response.TransactionWay,
+                    InterestRate= response.InterestRate,
+                    PaymentTerm= response.PaymentTerm,
+                    IsActive = response.IsActive
+                };
+
+                if (loanPlan == null)
+                {
+                    return NotFound("Plano não encontrado");
+                }
+
+                return Ok(loanPlan);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
+        }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Add([FromBody] LoanPlanViewModel request)
+        public async Task<IActionResult> Add([FromBody] LoanPlanRequest request)
         {
             try
             {
@@ -62,9 +104,16 @@ namespace CredLend_API.Controllers
                     return BadRequest("O objeto de solicitação é nulo");
                 }
 
-                var loanPlan = _mapper.Map<LoanPlan>(request);
+                var loanPlan = new LoanPlan
+                {
+                    ValuePlan = request.ValuePlan,
+                    TransactionWay = request.TransactionWay,
+                    InterestRate = request.InterestRate,
+                    PaymentTerm = request.PaymentTerm,
+                    IsActive = request.IsActive
+                };
 
-                _loanPlanRepository.Add(loanPlan, loanPlan.Id);
+                _loanPlanRepository.Add(loanPlan);
 
                 await _uow.SaveChangesAsync();
                 return Ok(loanPlan);
@@ -75,33 +124,9 @@ namespace CredLend_API.Controllers
             }
         }
 
-
-
-        [HttpGet("{LoanPlanId}")]
-        [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> GetById(Guid LoanPlanId)
-        {
-            try
-            {
-                var loanPlan = await _loanPlanRepository.GetById(LoanPlanId);
-
-                if (loanPlan == null)
-                {
-                    return BadRequest("Plano não encontrado");
-                }
-
-                return Ok(loanPlan);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
-            }
-        }
-
-
         [HttpPut]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Put([FromBody] LoanPlanViewModel loanPlan)
+        public async Task<IActionResult> Update([FromBody] LoanPlanViewModel loanPlan)
         {
             try
             {
@@ -109,12 +134,17 @@ namespace CredLend_API.Controllers
 
                 if (loanPlan.Id != entity.Id)
                 {
-                    return BadRequest();
+                    return NotFound("O ID da solicitação não corresponde ao ID existente.");
                 }
 
-                if (entity == null) return NotFound();
+                if (loanPlan == null) return BadRequest();
 
-                _mapper.Map(loanPlan, entity);
+                entity.Id = loanPlan.Id;
+                entity.ValuePlan = loanPlan.ValuePlan;
+                entity.TransactionWay = loanPlan.TransactionWay;
+                entity.InterestRate = loanPlan.InterestRate;
+                entity.PaymentTerm = loanPlan.PaymentTerm;
+                entity.IsActive = loanPlan.IsActive;
 
                 _loanPlanRepository.Update(entity);
                 await _uow.SaveChangesAsync();
@@ -126,17 +156,17 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpPut("{LoanPlanId}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> SwitchLoanPlan(Guid LoanPlanId)
+        [HttpPut]
+        [Route("{id:Guid}/delete")]
+        public async Task<IActionResult> Delete(Guid id)
         {
             try
             {
-                var existingPlan = await _loanPlanRepository.GetById(LoanPlanId);
+                var existingPlan = await _loanPlanRepository.GetById(id);
 
-                if (LoanPlanId != existingPlan.Id)
+                if (id != existingPlan.Id)
                 {
-                    return BadRequest();
+                    return NotFound("O ID da solicitação não corresponde ao ID existente.");
                 }
 
                 if (existingPlan.IsActive)
@@ -148,7 +178,7 @@ namespace CredLend_API.Controllers
                     existingPlan.IsActive = true;
                 }
 
-                _loanPlanRepository.SwitchLoanPlan(existingPlan);
+                _loanPlanRepository.PatchLoanPlan(existingPlan);
                 await _uow.SaveChangesAsync();
                 return Ok(existingPlan);
             }

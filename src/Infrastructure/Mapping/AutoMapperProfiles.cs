@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Domain.Models.Dto;
+using CredLend.Domain.Dto;
 using Domain.Models.Identity;
 using Domain.Models.OperationsModel;
 using Domain.Models.PlanModel;
@@ -12,7 +12,7 @@ using Domain.ViewModels;
 
 namespace Infrastructure.Mapping
 {
-  public class AutoMapperProfiles : Profile
+    public class AutoMapperProfiles : Profile
   {
     public AutoMapperProfiles()
     {
@@ -20,9 +20,9 @@ namespace Infrastructure.Mapping
       CreateMap<OperationsInvestmentPlan, OperationsInvestmentPlanViewModel>().ReverseMap();
       CreateMap<LoanPlan, LoanPlanViewModel>().ReverseMap();
       CreateMap<InvestmentPlan, InvestmentPlanViewModel>().ReverseMap();
-      CreateMap<User, UserDto>().ReverseMap();
-      CreateMap<User, UserLoginDto>().ReverseMap();
-      CreateMap<Role, RoleDto>().ReverseMap();
+      CreateMap<User, UserDTO>().ReverseMap();
+      CreateMap<User, UserLoginDTO>().ReverseMap();
+      CreateMap<Role, RoleDTO>().ReverseMap();
     }
   }
 }

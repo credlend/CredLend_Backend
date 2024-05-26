@@ -70,8 +70,6 @@ C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Infra
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
-C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Domain.dll
-C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\Domain.pdb
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
@@ -84,3 +82,5 @@ C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\refin
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\CredLend.Domain.dll
+C:\Projeto Integrador\CredLend_Backend\src\Infrastructure\bin\Debug\net7.0\CredLend.Domain.pdb

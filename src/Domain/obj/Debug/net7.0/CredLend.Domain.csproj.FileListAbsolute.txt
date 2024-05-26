@@ -1,0 +1,13 @@
+C:\Projeto Integrador\CredLend_Backend\src\Domain\bin\Debug\net7.0\CredLend.Domain.deps.json
+C:\Projeto Integrador\CredLend_Backend\src\Domain\bin\Debug\net7.0\CredLend.Domain.dll
+C:\Projeto Integrador\CredLend_Backend\src\Domain\bin\Debug\net7.0\CredLend.Domain.pdb
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.csproj.AssemblyReference.cache
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.AssemblyInfoInputs.cache
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.AssemblyInfo.cs
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.csproj.CoreCompileInputs.cache
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.sourcelink.json
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.dll
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\refint\CredLend.Domain.dll
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\CredLend.Domain.pdb
+C:\Projeto Integrador\CredLend_Backend\src\Domain\obj\Debug\net7.0\ref\CredLend.Domain.dll

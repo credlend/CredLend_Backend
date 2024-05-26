@@ -8,14 +8,14 @@ using Infrastructure.Data;
 
 namespace Infrastructure.Repositories
 {
-    public class InvestmentPlanRepository: RepositoryBase<InvestmentPlan, Guid>, IInventmentPlanRepository
+    public class InvestmentPlanRepository : RepositoryBase<InvestmentPlan, Guid>, IInventmentPlanRepository
     {
         
         public InvestmentPlanRepository(ApplicationDataContext applicationDataContext) : base(applicationDataContext)
         {
         }
 
-        public void SwitchInvestmentPlan(InvestmentPlan entity)
+        public void PatchInvestmentPlan(InvestmentPlan entity)
         {
             _entity.Update(entity);
         }

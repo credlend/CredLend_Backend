@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "CredLend.Test.Data/1.0.0": {
         "dependencies": {
-          "CredLend-API": "1.0.0",
-          "Infrastructure": "1.0.0",
+          "CredLend.API": "1.0.0",
+          "CredLend.Infrastructure": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
           "Microsoft.NET.Test.Sdk": "17.6.0",
           "coverlet.collector": "3.2.0",
@@ -1558,11 +1558,11 @@
         }
       },
       "xunit.runner.visualstudio/2.4.5": {},
-      "CredLend-API/1.0.0": {
+      "CredLend.API/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
-          "Domain": "1.0.0",
-          "Infrastructure": "1.0.0",
+          "CredLend.Domain": "1.0.0",
+          "CredLend.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10",
           "Microsoft.AspNetCore.OpenApi": "7.0.4",
@@ -1572,21 +1572,21 @@
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
-          "CredLend-API.dll": {}
+          "CredLend.API.dll": {}
         }
       },
-      "Domain/1.0.0": {
+      "CredLend.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10"
         },
         "runtime": {
-          "Domain.dll": {}
+          "CredLend.Domain.dll": {}
         }
       },
-      "Infrastructure/1.0.0": {
+      "CredLend.Infrastructure/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
-          "Domain": "1.0.0",
+          "CredLend.Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore.Design": "7.0.10",
@@ -1594,7 +1594,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "7.0.10"
         },
         "runtime": {
-          "Infrastructure.dll": {}
+          "CredLend.Infrastructure.dll": {}
         }
       }
     }
@@ -2585,17 +2585,17 @@
       "path": "xunit.runner.visualstudio/2.4.5",
       "hashPath": "xunit.runner.visualstudio.2.4.5.nupkg.sha512"
     },
-    "CredLend-API/1.0.0": {
+    "CredLend.API/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Domain/1.0.0": {
+    "CredLend.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Infrastructure/1.0.0": {
+    "CredLend.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

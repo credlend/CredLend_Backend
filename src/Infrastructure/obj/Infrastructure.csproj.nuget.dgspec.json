@@ -4,12 +4,12 @@
     "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
+    "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj",
+        "projectName": "CredLend.Domain",
+        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj",
         "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
         "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
@@ -65,12 +65,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -102,8 +116,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj"
+              "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj": {
+                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj"
               }
             }
           }
@@ -159,12 +173,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -385,9 +385,7 @@ C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\runtime
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\runtimes\win-x86\native\e_sqlite3.dll
-C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\Domain.dll
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\Infrastructure.dll
-C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\Domain.pdb
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\Infrastructure.pdb
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\CredLend-API.csproj.AssemblyReference.cache
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\CredLend-API.GeneratedMSBuildEditorConfig.editorconfig
@@ -411,3 +409,5 @@ C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\refint\
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\CredLend-API.pdb
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\CredLend-API.genruntimeconfig.cache
 C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\obj\Debug\net7.0\ref\CredLend-API.dll
+C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\CredLend.Domain.dll
+C:\Projeto Integrador\CredLend_Backend\src\CredLend-API\bin\Debug\net7.0\CredLend.Domain.pdb

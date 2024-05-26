@@ -774,9 +774,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj",
+      "projectName": "CredLend.Domain",
+      "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj",
       "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
       "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\obj\\",
       "projectStyle": "PackageReference",
@@ -793,6 +793,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -837,7 +838,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

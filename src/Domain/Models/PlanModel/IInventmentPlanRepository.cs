@@ -8,6 +8,6 @@ namespace Domain.Models.PlanModel
 {
     public interface IInventmentPlanRepository : IRepository<InvestmentPlan, Guid>
     {
-       void SwitchInvestmentPlan(InvestmentPlan entity);
+       void PatchInvestmentPlan(InvestmentPlan entity);
     }
 }

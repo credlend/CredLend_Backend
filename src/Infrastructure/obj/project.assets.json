@@ -684,17 +684,17 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
-      "Domain/1.0.0": {
+      "CredLend.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10"
         },
         "compile": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/CredLend.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/CredLend.Domain.dll": {}
         }
       }
     }
@@ -1616,16 +1616,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Domain/1.0.0": {
+    "CredLend.Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/Domain.csproj",
-      "msbuildProject": "../Domain/Domain.csproj"
+      "path": "../Domain/CredLend.Domain.csproj",
+      "msbuildProject": "../Domain/CredLend.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
-      "Domain >= 1.0.0",
+      "CredLend.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.10",
       "Microsoft.EntityFrameworkCore >= 7.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.10",
@@ -1640,9 +1640,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
-      "projectName": "Infrastructure",
-      "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\CredLend.Infrastructure.csproj",
+      "projectName": "CredLend.Infrastructure",
+      "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\CredLend.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
       "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
@@ -1659,14 +1659,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\Domain.csproj"
+            "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj": {
+              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Domain\\CredLend.Domain.csproj"
             }
           }
         }
@@ -1727,7 +1728,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

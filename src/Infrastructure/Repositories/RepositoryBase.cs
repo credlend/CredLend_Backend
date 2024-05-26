@@ -12,7 +12,6 @@ namespace Infrastructure.Repositories
     {
         protected readonly ApplicationDataContext _applicationDataContext;
         protected readonly DbSet<TEntity> _entity;
-        public virtual IUnitOfWork UnitOfWork => _applicationDataContext;
 
         public RepositoryBase(ApplicationDataContext applicationDataContext)
         {
@@ -20,11 +19,10 @@ namespace Infrastructure.Repositories
             _entity = _applicationDataContext.Set<TEntity>();
         }
 
-        public Task<TEntity> Add(TEntity entity, TKey id)
+        public void Add(TEntity entity)
         {
             _entity.Add(entity);
-            var selectedEntity = GetById(id);
-            return selectedEntity;
+            SaveChangesAsync();
         }
 
         public async Task<IQueryable<TEntity>> GetAll()
@@ -40,6 +38,7 @@ namespace Infrastructure.Repositories
         public void Update(TEntity entity)
         {
             _entity.Update(entity);
+            SaveChangesAsync();
         }
 
         public void Dispose()
@@ -47,10 +46,9 @@ namespace Infrastructure.Repositories
             _applicationDataContext.Dispose();
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async void SaveChangesAsync()
         {
-            var result = await _applicationDataContext.SaveChangesAsync().ConfigureAwait(false);
-            return result;
+             await _applicationDataContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
 

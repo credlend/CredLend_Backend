@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain.Models.Dto;
+using CredLend.Domain.Dto;
 using Domain.Models.Identity;
 using Domain.Models.RoleModel;
 using Domain.Models.UserModel;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CredLend_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class RoleController : ControllerBase
     {
         private readonly RoleManager<Role> _roleManagers;
@@ -50,11 +50,11 @@ namespace CredLend_API.Controllers
 
         [HttpPost("CreateRole")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateRole(RoleDto roleDto)
+        public async Task<IActionResult> CreateRole(RoleDTO RoleDTO)
         {
             try
             {
-                var retorno = await _roleManagers.CreateAsync(new Role { Name = roleDto.Name });
+                var retorno = await _roleManagers.CreateAsync(new Role { Name = RoleDTO.Name });
 
                 return Ok(retorno);
             }
@@ -67,7 +67,7 @@ namespace CredLend_API.Controllers
 
         [HttpPut("UpdateUserRole")]
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateUserRoles(UpdateUserDto model)
+        public async Task<IActionResult> UpdateUserRoles(UpdateUserDTO model)
         {
             try
             {

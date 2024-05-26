@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "9+eisKj5PXoc2KnlDl5kvm25oxfvoJq0nAZRwS1wnHc=",
-  "Source": "CredLend-API",
-  "BasePath": "_content/CredLend-API",
+  "Hash": "/tU1zyzAC5fz4XFpIF+vkar37UZUJ74Bcvf2D1TqINE=",
+  "Source": "CredLend.API",
+  "BasePath": "_content/CredLend.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

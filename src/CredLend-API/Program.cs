@@ -1,5 +1,7 @@
 using System.Text;
 using AutoMapper;
+using CredLend.Service.Interfaces;
+using CredLend.Service;
 using Domain.Core.Data;
 using Domain.Models.Identity;
 using Domain.Models.OperationsModel;
@@ -20,7 +22,6 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -58,6 +59,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<ApplicationDataContext>(options =>
 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultContext")));
 
+builder.Services.AddScoped<IInvestmentPlanService, InvestmentPlanService>();
 builder.Services.AddScoped<IOperationsLoanPlanRepository, OperationsLoanPlanRepository>();
 builder.Services.AddScoped<IOperationsInvestmentPlanRepository, OperationsInvestmentPlanRepository>();
 builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();

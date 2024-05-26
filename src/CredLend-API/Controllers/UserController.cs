@@ -2,8 +2,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
+using CredLend.Domain.Dto;
 using Domain.Core.Data;
-using Domain.Models.Dto;
 using Domain.Models.Identity;
 using Domain.Models.UserModel;
 using Microsoft.AspNetCore.Authorization;
@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace CredLend_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository<User> _userRepository;
@@ -85,28 +85,28 @@ namespace CredLend_API.Controllers
 
         [HttpPost("Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(UserDto userDto)
+        public async Task<IActionResult> Register(UserDTO UserDTO)
         {
             try
             {
-                var user = await _userManager.FindByNameAsync(userDto.UserName);
+                var user = await _userManager.FindByNameAsync(UserDTO.UserName);
 
                 if (user == null)
                 {
                     user = new User
                     {
-                        UserName = userDto.UserName,
-                        NormalizedEmail = userDto.Email,
-                        Email = userDto.Email,
-                        CompleteName = userDto.CompleteName,
-                        CPF = userDto.CPF,
-                        BirthDate = userDto.BirthDate,
+                        UserName = UserDTO.UserName,
+                        NormalizedEmail = UserDTO.Email,
+                        Email = UserDTO.Email,
+                        CompleteName = UserDTO.CompleteName,
+                        CPF = UserDTO.CPF,
+                        BirthDate = UserDTO.BirthDate,
                         IsActive = true
                     };
 
 
                     var result = await _userManager.CreateAsync(
-                        user, userDto.Password
+                        user, UserDTO.Password
                     );
 
                     if (result.Succeeded)
@@ -169,7 +169,7 @@ namespace CredLend_API.Controllers
 
         [HttpPost("Login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(UserLoginDto userLogin)
+        public async Task<IActionResult> Login(UserLoginDTO userLogin)
         {
             try
             {
@@ -183,7 +183,7 @@ namespace CredLend_API.Controllers
                     {
                         var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == user.Email.ToUpper());
 
-                        var userToReturn = _mapper.Map<UserLoginDto>(appUser);
+                        var userToReturn = _mapper.Map<UserLoginDTO>(appUser);
 
                         return Ok(new
                         {

@@ -17,7 +17,7 @@ namespace Infrastructure.Repositories
             _entity = applicationDataContext.Set<LoanPlan>();
         }
 
-        public void SwitchLoanPlan(LoanPlan entity)
+        public void PatchLoanPlan(LoanPlan entity)
         {
             _entity.Update(entity);
         }

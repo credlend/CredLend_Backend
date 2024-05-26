@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Core.Data;
 using Domain.Models.OperationsModel;
+using Domain.Requests;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CredLend_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class OperationsLoanPlanController : ControllerBase
     {
         private readonly IOperationsLoanPlanRepository _operationsLoanPlan;
@@ -32,7 +33,7 @@ namespace CredLend_API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> Add([FromBody] OperationsLoanPlanViewModel request)
+        public async Task<IActionResult> Add([FromBody] OperationsLoanPlanRequest request)
         {
             try
             {
@@ -41,9 +42,20 @@ namespace CredLend_API.Controllers
                     return BadRequest("O objeto de solicitação é nulo");
                 }
 
-                var opLoanPlan = _mapper.Map<OperationsLoanPlan>(request);
+                var opLoanPlan = new OperationsLoanPlan
+                {
+                    ValuePlan = request.ValuePlan,
+                    TransactionWay = request.TransactionWay,
+                    UserName = request.UserName,
+                    Email = request.Email,
+                    OperationDate = request.OperationDate,
+                    IsActive = request.IsActive,
+                    UserID = request.UserID,
+                    InterestRate = request.InterestRate,
+                    PaymentTerm = request.PaymentTerm,
+                };
 
-                _operationsLoanPlan.Add(opLoanPlan, opLoanPlan.Id);
+                _operationsLoanPlan.Add(opLoanPlan);
 
                 await _uow.SaveChangesAsync();
                 return Ok(opLoanPlan);
