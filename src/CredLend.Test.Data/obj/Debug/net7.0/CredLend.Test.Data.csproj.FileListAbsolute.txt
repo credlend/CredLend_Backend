@@ -500,3 +500,12 @@ C:\Projeto Integrador\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\r
 C:\Projeto Integrador\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.pdb
 C:\Projeto Integrador\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.genruntimeconfig.cache
 C:\Projeto Integrador\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\ref\CredLend.Test.Data.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.csproj.AssemblyReference.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.AssemblyInfoInputs.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.AssemblyInfo.cs
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.csproj.CoreCompileInputs.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\refint\CredLend.Test.Data.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\src\CredLend.Test.Data\obj\Debug\net7.0\CredLend.Test.Data.pdb

@@ -503,3 +503,11 @@ C:\Projeto Integrador\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\ref
 C:\Projeto Integrador\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.pdb
 C:\Projeto Integrador\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.genruntimeconfig.cache
 C:\Projeto Integrador\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\ref\CredLend.Tests.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.csproj.AssemblyReference.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfoInputs.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfo.cs
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.csproj.CoreCompileInputs.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\refint\CredLend.Tests.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.pdb

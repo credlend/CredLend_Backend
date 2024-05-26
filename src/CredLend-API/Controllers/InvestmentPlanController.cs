@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
 using CredLend.Domain.DTOs;
 using CredLend.Service.Interfaces;
-using Domain.Core.Data;
-using Domain.Models.PlanModel;
 using Domain.Requests;
 using Domain.ViewModels;
-using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +12,11 @@ namespace CredLend_API.Controllers
     public class InvestmentPlanController : ControllerBase
     {
         private readonly IInvestmentPlanService _service;
+
         public InvestmentPlanController(IInvestmentPlanService service)
         {
-            _service = service;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
-
 
         [HttpGet]
         [Authorize(Roles = "Admin, User")]
@@ -42,11 +34,11 @@ namespace CredLend_API.Controllers
                     ReturnDeadLine = response.ReturnDeadLine,
                     ReturnRate = response.ReturnRate,
                     IsActive = response.IsActive
-                });   
+                }).ToList();
 
-                if (plans == null)
+                if (plans.Count == 0)
                 {
-                    return NotFound("Nenhum plano de investimento cadatrado");
+                    return NotFound("Nenhum plano de investimento cadastrado");
                 }
 
                 return Ok(plans);
@@ -57,14 +49,18 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("{id:Guid}")]
+        [HttpGet("{id:Guid}")]
         [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> Get(Guid id)
         {
             try
             {
                 var response = await _service.Get(id);
+
+                if (response == null)
+                {
+                    return NotFound("Plano não encontrado");
+                }
 
                 var investmentPlan = new InvestmentPlanViewModel
                 {
@@ -75,11 +71,6 @@ namespace CredLend_API.Controllers
                     ReturnRate = response.ReturnRate,
                     IsActive = response.IsActive,
                 };
-
-                if (investmentPlan == null)
-                {
-                    return NotFound("Plano não encontrado");
-                }
 
                 return Ok(investmentPlan);
             }
@@ -119,30 +110,32 @@ namespace CredLend_API.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("{id:Guid}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(InvestmentPlanRequest investmentPlan, Guid id)
+        public async Task<IActionResult> Update(Guid id, InvestmentPlanRequest investmentPlan)
         {
             try
             {
                 var entity = await _service.Get(id);
 
-                if (id != entity.Id)
+                if (entity == null)
                 {
-                    return NotFound("O ID da solicitação não corresponde ao ID existente.");
+                    return NotFound("Plano de investimento não encontrado.");
                 }
 
+                if (id != entity.Id)
+                {
+                    return BadRequest("O ID da solicitação não corresponde ao ID existente.");
+                }
 
-                if (entity == null) return NotFound("Plano de investimento não encontrado.");
-      
                 entity.ValuePlan = investmentPlan.ValuePlan;
                 entity.TransactionWay = investmentPlan.TransactionWay;
                 entity.ReturnDeadLine = investmentPlan.ReturnDeadLine;
                 entity.ReturnRate = investmentPlan.ReturnRate;
                 entity.IsActive = investmentPlan.IsActive;
 
-                _service.Update(entity);
-             
+                _service.Update(id, entity);
+
                 return Ok(entity);
             }
             catch (Exception ex)
@@ -151,37 +144,27 @@ namespace CredLend_API.Controllers
             }
         }
 
+        [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                var entity = await _service.Get(id);
 
-        /* [HttpPut]
-         [Route("{id:Guid}/delete")]
-         public async Task<IActionResult> Delete(Guid id)
-         {
-             try
-             {
-                 var existingPlan = await _service.Get(id);
+                if (entity == null)
+                {
+                    return NotFound("Plano de investimento não encontrado.");
+                }
 
-                 if (id != existingPlan.Id)
-                 {
-                     return NotFound("O ID da solicitação não corresponde ao ID existente.");
-                 }
+                _service.Delete(id);
 
-                 if (existingPlan.IsActive)
-                 {
-                     existingPlan.IsActive = false;
-                 }
-                 else
-                 {
-                     existingPlan.IsActive = true;
-                 }
-
-                 _investmentPlan.PatchInvestmentPlan(existingPlan);
-                 await _uow.SaveChangesAsync();
-                 return Ok(existingPlan);
-             }
-             catch (Exception ex)
-             {
-                 return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
-             }
-         }*/
+                return Ok(entity);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
+        }
     }
 }
