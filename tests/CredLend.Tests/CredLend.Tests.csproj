@@ -5,8 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\CredLend-API\CredLend.API.csproj" />
-    <ProjectReference Include="..\..\src\Domain\CredLend.Domain.csproj" />
+    <ProjectReference Include="..\..\src\CredLend.API\CredLend.API.csproj" />
+    <ProjectReference Include="..\..\src\CredLend.Domain\CredLend.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />

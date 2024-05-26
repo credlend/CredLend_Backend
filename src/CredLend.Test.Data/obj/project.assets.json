@@ -7894,18 +7894,18 @@
     },
     "CredLend.API/1.0.0": {
       "type": "project",
-      "path": "../CredLend-API/CredLend.API.csproj",
-      "msbuildProject": "../CredLend-API/CredLend.API.csproj"
+      "path": "../CredLend.API/CredLend.API.csproj",
+      "msbuildProject": "../CredLend.API/CredLend.API.csproj"
     },
     "CredLend.Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/CredLend.Domain.csproj",
-      "msbuildProject": "../Domain/CredLend.Domain.csproj"
+      "path": "../CredLend.Domain/CredLend.Domain.csproj",
+      "msbuildProject": "../CredLend.Domain/CredLend.Domain.csproj"
     },
     "CredLend.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Infrastructure/CredLend.Infrastructure.csproj",
-      "msbuildProject": "../Infrastructure/CredLend.Infrastructure.csproj"
+      "path": "../CredLend.Infrastructure/CredLend.Infrastructure.csproj",
+      "msbuildProject": "../CredLend.Infrastructure/CredLend.Infrastructure.csproj"
     },
     "CredLend.Service/1.0.0": {
       "type": "project",
@@ -7957,11 +7957,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend.API.csproj": {
-              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend.API.csproj"
+            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\CredLend.API.csproj": {
+              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\CredLend.API.csproj"
             },
-            "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\CredLend.Infrastructure.csproj": {
-              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\CredLend.Infrastructure.csproj"
+            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {
+              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj"
             }
           }
         }
