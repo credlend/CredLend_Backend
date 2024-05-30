@@ -15,8 +15,8 @@ namespace CredLend.Domain.DTOs
         public string UserName { get; set; }
         public string Email { get; set; }
         public DateTime OperationDate { get; set; }
-        public DateTime PaymentTerm { get; set; }
-        public double InterestRate { get; set; }
+        public double ReturnRate { get; set; }
+        public DateTime ReturnDeadLine { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Domain.Models.OperationsModel
 {
     public class OperationsInvestmentPlan : Operations
     {
-         public double ReturnRate { get; set; }
+        public double ReturnRate { get; set; }
         public DateTime ReturnDeadLine { get; set; }
     }
 }

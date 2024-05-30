@@ -16,6 +16,5 @@ namespace Domain.Requests
         public DateTime OperationDate { get; set; }
         public double ReturnRate { get; set; }
         public DateTime ReturnDeadLine { get; set; }
-        public bool IsActive { get; set; }
     }
 }

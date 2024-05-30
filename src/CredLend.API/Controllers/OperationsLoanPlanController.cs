@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CredLend.Domain.DTOs;
+using CredLend.Service.Interfaces;
 using Domain.Core.Data;
 using Domain.Models.OperationsModel;
 using Domain.Requests;
@@ -16,20 +18,12 @@ namespace CredLend_API.Controllers
     [Route("api/v1/[controller]")]
     public class OperationsLoanPlanController : ControllerBase
     {
-        private readonly IOperationsLoanPlanRepository _operationsLoanPlan;
+        private readonly IOperationsLoanPlanService _service;
 
-        private readonly IUnitOfWork _uow;
-
-        private readonly IMapper _mapper;
-
-        public OperationsLoanPlanController(IOperationsLoanPlanRepository opLoanPlanRepository, IUnitOfWork uow, IMapper mapper)
+        public OperationsLoanPlanController(IOperationsLoanPlanService service)
         {
-            _operationsLoanPlan = opLoanPlanRepository;
-            _uow = uow;
-            _mapper = mapper;
+            _service = service ?? throw new ArgumentNullException(nameof(service));
         }
-
-
 
         [HttpPost]
         [Authorize(Roles = "Admin, User")]
@@ -42,23 +36,21 @@ namespace CredLend_API.Controllers
                     return BadRequest("O objeto de solicitação é nulo");
                 }
 
-                var opLoanPlan = new OperationsLoanPlan
+                var loanPlan = new OperationsLoanPlanDTO
                 {
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
-                    UserName = request.UserName,
                     Email = request.Email,
                     OperationDate = request.OperationDate,
-                    IsActive = request.IsActive,
-                    UserID = request.UserID,
                     InterestRate = request.InterestRate,
+                    UserID = request.UserID,
+                    UserName = request.UserName,
                     PaymentTerm = request.PaymentTerm,
                 };
 
-                _operationsLoanPlan.Add(opLoanPlan);
+                _service.Add(loanPlan);
 
-                await _uow.SaveChangesAsync();
-                return Ok(opLoanPlan);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -67,19 +59,20 @@ namespace CredLend_API.Controllers
         }
 
 
-        [HttpDelete("{OperationId}")]
+        [HttpDelete("{id:Guid}")]
         [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> Delete(Guid UserId)
+        public async Task<IActionResult> Delete(Guid id)
         {
             try
             {
-                var entity = await _operationsLoanPlan.GetById(UserId);
+                var entity = await _service.Get(id);
 
-                if (entity == null) return NotFound();
+                if (entity == null)
+                {
+                    return NotFound("Plano de investimento não encontrado.");
+                }
 
-                entity.IsActive = false;
-
-                await _uow.SaveChangesAsync();
+                _service.Delete(id);
 
                 return Ok();
             }

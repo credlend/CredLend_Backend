@@ -9,6 +9,7 @@ namespace CredLend.Service.Interfaces
 {
     public interface IOperationsLoanPlanService
     {
+        Task<OperationsLoanPlanDTO> Get(Guid id);
         void Add(OperationsLoanPlanDTO dto);
         void Delete(Guid id);
     }
