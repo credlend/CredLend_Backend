@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oxaVslL5zS+ose8Ejt4W9Lf5N6cmqL0M4rP/xlrosiyjupfxkSGsUfomE6r0PPCSl5/jleWvVZR3k0vu3tVBEw==",
+  "dgSpecHash": "xCSx36nJVVQ=",
   "success": true,
   "projectFilePath": "C:\\Projeto Integrador\\CredLend_Backend\\tests\\CredLend.Tests\\CredLend.Tests.csproj",
   "expectedPackageFiles": [
@@ -145,7 +145,10 @@
     "C:\\Users\\leona\\.nuget\\packages\\xunit.core\\2.5.3\\xunit.core.2.5.3.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\xunit.extensibility.core\\2.5.3\\xunit.extensibility.core.2.5.3.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\xunit.extensibility.execution\\2.5.3\\xunit.extensibility.execution.2.5.3.nupkg.sha512",
-    "C:\\Users\\leona\\.nuget\\packages\\xunit.runner.visualstudio\\2.5.3\\xunit.runner.visualstudio.2.5.3.nupkg.sha512"
+    "C:\\Users\\leona\\.nuget\\packages\\xunit.runner.visualstudio\\2.5.3\\xunit.runner.visualstudio.2.5.3.nupkg.sha512",
+    "C:\\Users\\leona\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\leona\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\leona\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512"
   ],
   "logs": []
 }

@@ -2604,13 +2604,14 @@
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "CredLend-API/1.0.0": {
+      "CredLend.API/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
-          "Domain": "1.0.0",
-          "Infrastructure": "1.0.0",
+          "CredLend.Domain": "1.0.0",
+          "CredLend.Infrastructure": "1.0.0",
+          "CredLend.Service": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.10",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10",
           "Microsoft.AspNetCore.OpenApi": "7.0.4",
@@ -2620,34 +2621,34 @@
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "compile": {
-          "bin/placeholder/CredLend-API.dll": {}
+          "bin/placeholder/CredLend.API.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CredLend-API.dll": {}
+          "bin/placeholder/CredLend.API.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Domain/1.0.0": {
+      "CredLend.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10"
         },
         "compile": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/CredLend.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/CredLend.Domain.dll": {}
         }
       },
-      "Infrastructure/1.0.0": {
+      "CredLend.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
-          "Domain": "1.0.0",
+          "CredLend.Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore.Design": "7.0.10",
@@ -2655,10 +2656,24 @@
           "Microsoft.EntityFrameworkCore.Tools": "7.0.10"
         },
         "compile": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/CredLend.Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Infrastructure.dll": {}
+          "bin/placeholder/CredLend.Infrastructure.dll": {}
+        }
+      },
+      "CredLend.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CredLend.Domain": "1.0.0",
+          "CredLend.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CredLend.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CredLend.Service.dll": {}
         }
       }
     }
@@ -7877,26 +7892,31 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "CredLend-API/1.0.0": {
+    "CredLend.API/1.0.0": {
       "type": "project",
-      "path": "../CredLend-API/CredLend-API.csproj",
-      "msbuildProject": "../CredLend-API/CredLend-API.csproj"
+      "path": "../CredLend.API/CredLend.API.csproj",
+      "msbuildProject": "../CredLend.API/CredLend.API.csproj"
     },
-    "Domain/1.0.0": {
+    "CredLend.Domain/1.0.0": {
       "type": "project",
-      "path": "../Domain/Domain.csproj",
-      "msbuildProject": "../Domain/Domain.csproj"
+      "path": "../CredLend.Domain/CredLend.Domain.csproj",
+      "msbuildProject": "../CredLend.Domain/CredLend.Domain.csproj"
     },
-    "Infrastructure/1.0.0": {
+    "CredLend.Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Infrastructure/Infrastructure.csproj",
-      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
+      "path": "../CredLend.Infrastructure/CredLend.Infrastructure.csproj",
+      "msbuildProject": "../CredLend.Infrastructure/CredLend.Infrastructure.csproj"
+    },
+    "CredLend.Service/1.0.0": {
+      "type": "project",
+      "path": "../CredLend.Service/CredLend.Service.csproj",
+      "msbuildProject": "../CredLend.Service/CredLend.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "CredLend-API >= 1.0.0",
-      "Infrastructure >= 1.0.0",
+      "CredLend.API >= 1.0.0",
+      "CredLend.Infrastructure >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
       "Microsoft.NET.Test.Sdk >= 17.6.0",
       "coverlet.collector >= 3.2.0",
@@ -7930,17 +7950,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj": {
-              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend-API\\CredLend-API.csproj"
+            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\CredLend.API.csproj": {
+              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\CredLend.API.csproj"
             },
-            "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {
+              "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj"
             }
           }
         }
@@ -7996,12 +8017,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.19, 7.0.19]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

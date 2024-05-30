@@ -5,17 +5,19 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{888BFE88-F916-4343-87B5-051977242221}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend-API", "src\CredLend-API\CredLend-API.csproj", "{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.API", "src\CredLend.API\CredLend.API.csproj", "{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Domain", "src\CredLend.Domain\CredLend.Domain.csproj", "{E376AB0E-E68A-4B56-936E-70C143AAAC53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Infrastructure", "src\CredLend.Infrastructure\CredLend.Infrastructure.csproj", "{CF602FEC-E8E5-4C16-AF6E-4055658A85AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E070287F-F65F-4245-9589-917971117A13}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Tests", "tests\CredLend.Tests\CredLend.Tests.csproj", "{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CredLend.Test.Data", "src\CredLend.Test.Data\CredLend.Test.Data.csproj", "{4393601A-4637-4D77-B2E4-F8FE05C374A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Test.Data", "src\CredLend.Test.Data\CredLend.Test.Data.csproj", "{4393601A-4637-4D77-B2E4-F8FE05C374A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CredLend.Service", "src\CredLend.Service\CredLend.Service.csproj", "{1E31A64C-807E-450C-9809-AAAA1669F5F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{4393601A-4637-4D77-B2E4-F8FE05C374A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4393601A-4637-4D77-B2E4-F8FE05C374A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4393601A-4637-4D77-B2E4-F8FE05C374A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E31A64C-807E-450C-9809-AAAA1669F5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E31A64C-807E-450C-9809-AAAA1669F5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E31A64C-807E-450C-9809-AAAA1669F5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E31A64C-807E-450C-9809-AAAA1669F5F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{CF602FEC-E8E5-4C16-AF6E-4055658A85AF} = {888BFE88-F916-4343-87B5-051977242221}
 		{B9FDF9FC-0F4C-4C70-AEDD-35C9BDD6FB96} = {E070287F-F65F-4245-9589-917971117A13}
 		{4393601A-4637-4D77-B2E4-F8FE05C374A7} = {888BFE88-F916-4343-87B5-051977242221}
+		{1E31A64C-807E-450C-9809-AAAA1669F5F3} = {888BFE88-F916-4343-87B5-051977242221}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5227028D-B4AA-439D-A886-7009DC573C98}
