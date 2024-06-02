@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {}
+    "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj": {
+    "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj",
         "projectName": "CredLend.Domain",
-        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj",
-        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
-        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\obj\\",
+        "projectPath": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj",
+        "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -66,44 +56,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {
+    "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj",
         "projectName": "CredLend.Infrastructure",
-        "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
-        "outputPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Infrastructure\\CredLend.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,15 +83,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj": {
-                "projectPath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj"
+              "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj": {
+                "projectPath": "C:\\Users\\mario\\Documents\\Projeto Integrador\\CredLend_Backend\\CredLend_Backend\\src\\CredLend.Domain\\CredLend.Domain.csproj"
               }
             }
           }
@@ -128,11 +99,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -175,26 +141,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.19, 7.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

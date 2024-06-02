@@ -23,11 +23,11 @@ namespace CredLend.Service
             var activePlanDTOs = activePlans.Select(p => new InvestmentPlanDTO
             {
                 Id = p.Id,
+                IsActive = p.IsActive,
                 ReturnDeadLine = p.ReturnDeadLine,
                 ReturnRate = p.ReturnRate,
                 TransactionWay = p.TransactionWay,
                 ValuePlan = p.ValuePlan,
-                IsActive = p.IsActive
             }).ToList();
 
             return activePlanDTOs;
@@ -45,11 +45,11 @@ namespace CredLend.Service
             var planDTO = new InvestmentPlanDTO
             {
                 Id = plan.Id,
+                IsActive = plan.IsActive,
                 ReturnDeadLine = plan.ReturnDeadLine,
                 ReturnRate = plan.ReturnRate,
                 TransactionWay = plan.TransactionWay,
                 ValuePlan = plan.ValuePlan,
-                IsActive = plan.IsActive
             };
 
             return planDTO;
@@ -63,7 +63,7 @@ namespace CredLend.Service
                 TransactionWay = dto.TransactionWay,
                 ReturnDeadLine = dto.ReturnDeadLine,
                 ReturnRate = dto.ReturnRate,
-                IsActive = true
+                IsActive = dto.IsActive
             };
 
             _repository.Add(investmentPlan);
@@ -75,6 +75,7 @@ namespace CredLend.Service
 
             if (entity != null)
             {
+                entity.IsActive = dto.IsActive;
                 entity.ReturnDeadLine = dto.ReturnDeadLine;
                 entity.ReturnRate = dto.ReturnRate;
                 entity.TransactionWay = dto.TransactionWay;
@@ -86,13 +87,7 @@ namespace CredLend.Service
 
         public void Delete(Guid id)
         {
-            var entity = _context.InvestmentPlan.Find(id);
-
-            if (entity != null)
-            {
-                entity.IsActive = false;
-                _repository.Update(entity);
-            }
+            throw new NotImplementedException();
         }
     }
 }
