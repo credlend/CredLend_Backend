@@ -8,6 +8,8 @@ namespace CredLend.Domain.Dto
 {
     public class UserDTO
     {
+        public Guid Id { get; set; }
+
         public string CompleteName { get; set; }
 
         public string UserName { get; set; }
@@ -15,9 +17,8 @@ namespace CredLend.Domain.Dto
         public string CPF { get; set; }
 
         public string Email { get; set; }
-        public DateTime BirthDate { get; set; }
 
-        // public string Role { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public bool IsActive { get; set; }
 
