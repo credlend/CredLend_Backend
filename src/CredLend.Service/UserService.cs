@@ -130,7 +130,7 @@ namespace CredLend.Service
                         UserName = null,
                         Token = null,
                         IsSucceded = false,
-                        IsActive = true,
+                        IsActive = false,
                     };
 
                     return userToReturn;

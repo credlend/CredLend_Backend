@@ -69,12 +69,14 @@ namespace CredLend_API.Controllers
             {
                 var token = await _service.Register(request);
 
-                if (token != null)
+                if (token.IsSucceded == true && token.AuthToken != null)
                 {
                     return Ok(token);
                 }
-
-                return Unauthorized();
+                else
+                {
+                    return BadRequest("Falha ao registrar usuário. Verifique os dados e tente novamente.");
+                }
             }
             catch (Exception ex)
             {
@@ -95,19 +97,15 @@ namespace CredLend_API.Controllers
             {
                 var user = await _service.Login(userLogin);
 
-                if (user.IsSucceded == false)
+                if (user.IsSucceded == false && user.IsActive == false && user.Token == null && user.UserName == null)
                 {
-                    return BadRequest();
-                    
+                    return BadRequest("Falha ao realizar o login do usuário. Verifique os dados e tente novamente.");
+
                 }
-
-                if (user.IsActive == false)
+                else
                 {
-                    return Unauthorized();
-                } 
-
-                return Ok(user);
-                
+                    return Ok(user);
+                }
             }
             catch (System.Exception ex)
             {
@@ -121,7 +119,7 @@ namespace CredLend_API.Controllers
         {
             try
             {
-               _service.Delete(id);
+                _service.Delete(id);
 
                 return Ok();
             }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CredLend.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc4a08c22078fd3dbbb793fbeddea4657f7e797d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70cbfe98a9056b57f16deef95db6e092873e2fd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("CredLend.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CredLend.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
