@@ -116,7 +116,9 @@ namespace CredLend.Service
 
                     var userToReturn = new LoginResponseDTO
                     {
+                        Id = Guid.Parse(appUser.Id),
                         UserName = appUser.UserName,
+                        CompleteName = appUser.CompleteName,
                         Token = GenerateJWToken(appUser).Result,
                         IsSucceded = true,
                         IsActive = true,
@@ -127,7 +129,9 @@ namespace CredLend.Service
                 else {
                     var userToReturn = new LoginResponseDTO
                     {
+                        Id = Guid.Empty,
                         UserName = null,
+                        CompleteName = null,
                         Token = null,
                         IsSucceded = false,
                         IsActive = false,

@@ -69,7 +69,7 @@ namespace CredLend_API.Controllers
             {
                 var token = await _service.Register(request);
 
-                if (token.IsSucceded == true && token.AuthToken != null)
+                if (token.IsSucceded == true || token.AuthToken != null)
                 {
                     return Ok(token);
                 }
@@ -93,14 +93,19 @@ namespace CredLend_API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(UserLoginDTO userLogin)
         {
+            if (string.IsNullOrEmpty(userLogin.Email) || string.IsNullOrEmpty(userLogin.Password))
+            {
+                throw new ArgumentNullException(nameof(userLogin), "Email e senha não podem ser nulos ou vazios.");
+            }
+
             try
             {
                 var user = await _service.Login(userLogin);
 
-                if (user.IsSucceded == false && user.IsActive == false && user.Token == null && user.UserName == null)
+                if (user.IsSucceded == false || user.IsActive == false || user.Token == null || 
+                    user.UserName == null || user.CompleteName == null || user.Id == Guid.Empty)
                 {
                     return BadRequest("Falha ao realizar o login do usuário. Verifique os dados e tente novamente.");
-
                 }
                 else
                 {

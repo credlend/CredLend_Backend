@@ -9,21 +9,21 @@ namespace CredLend.Domain.Requests
 {
     public class UserRequest
     {
-        public string CompleteName { get; set; }
+        public string CompleteName { get; set; } = string.Empty;
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
-        public string CPF { get; set; }
+        public string CPF { get; set; } = string.Empty;
 
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         public DateTime BirthDate { get; set; }
 
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
 
         [Compare("Password")]
         [DataType(DataType.Password)]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
     }
 }

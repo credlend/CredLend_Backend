@@ -9,7 +9,7 @@ namespace Domain.Requests
     public class InvestmentPlanRequest
     {
         public double ValuePlan { get; set; }
-        public string TransactionWay { get; set; }
+        public string TransactionWay { get; set; } = string.Empty;
         public DateTime ReturnDeadLine { get; set; }
         public double ReturnRate { get; set; }
     }
