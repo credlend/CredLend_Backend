@@ -60,45 +60,51 @@ namespace CredLend.Service
             return userDTO;
         }
 
-        public async Task<RegisterResponseDTO> Register(UserRequest dto)
+        public async Task<RegisterResponseDTO> Register(UserRequest request)
         {
+            var existingUser = await _userManager.FindByNameAsync(request.UserName);
+
+            if (existingUser != null)
+            {
+                throw new InvalidOperationException("Username already exists");
+            }
 
             var user = new User
             {
-                UserName = dto.UserName,
-                NormalizedEmail = dto.Email,
-                Email = dto.Email,
-                CompleteName = dto.CompleteName,
-                CPF = dto.CPF,
-                BirthDate = dto.BirthDate,
+                UserName = request.UserName,
+                Email = request.Email,
+                CompleteName = request.CompleteName,
+                CPF = request.CPF,
+                BirthDate = request.BirthDate,
                 IsActive = true
             };
 
+            var result = await _userManager.CreateAsync(user, request.Password);
 
-            var result = await _userManager.CreateAsync(
-                user, dto.Password
-            );
+            var response = new RegisterResponseDTO();
 
             if (result.Succeeded)
             {
                 var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedUserName == user.UserName.ToUpper());
-                var response = new RegisterResponseDTO
-                {
-                    IsSucceded = true,
-                    AuthToken = GenerateJWToken(appUser).Result
-                };
 
-                return response;
+                await _userManager.AddToRoleAsync(appUser, "USER");
 
-            } else {
-                var response = new RegisterResponseDTO
-                {
-                    IsSucceded = false,
-                    AuthToken = null
-                };
+                response.Id = Guid.Parse(appUser.Id);
+                response.UserName = appUser.UserName;
+                response.CompleteName = appUser.CompleteName;
+                response.IsSucceded = true;
+                response.Token = GenerateJWToken(appUser).Result;
 
                 return response;
             }
+
+            response.Id = Guid.Empty;
+            response.UserName = null;
+            response.CompleteName = null;
+            response.IsSucceded = false;
+            response.Token = null;
+
+            return response;
         }
 
 
@@ -121,12 +127,12 @@ namespace CredLend.Service
                         CompleteName = appUser.CompleteName,
                         Token = GenerateJWToken(appUser).Result,
                         IsSucceded = true,
-                        IsActive = true,
                     };
 
                     return userToReturn;
                 }
-                else {
+                else
+                {
                     var userToReturn = new LoginResponseDTO
                     {
                         Id = Guid.Empty,
@@ -134,7 +140,6 @@ namespace CredLend.Service
                         CompleteName = null,
                         Token = null,
                         IsSucceded = false,
-                        IsActive = false,
                     };
 
                     return userToReturn;
@@ -143,10 +148,11 @@ namespace CredLend.Service
 
             var response = new LoginResponseDTO
             {
+                Id = Guid.Empty,
                 UserName = null,
+                CompleteName = null,
                 Token = null,
                 IsSucceded = false,
-                IsActive = false,
             };
 
             return response;

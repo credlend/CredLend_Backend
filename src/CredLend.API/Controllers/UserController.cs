@@ -67,11 +67,11 @@ namespace CredLend_API.Controllers
         {
             try
             {
-                var token = await _service.Register(request);
+                var response = await _service.Register(request);
 
-                if (token.IsSucceded == true || token.AuthToken != null)
+                if (response.IsSucceded == true || response.Token != null)
                 {
-                    return Ok(token);
+                    return Ok(response);
                 }
                 else
                 {

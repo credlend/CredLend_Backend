@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CredLend.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72fb91f90616ca651da20da0aab7d53983337fdf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd148b05fdfd83146cdb25f92533e4140551680c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CredLend.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CredLend.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
