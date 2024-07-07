@@ -127,6 +127,7 @@ namespace CredLend.Service
                         CompleteName = appUser.CompleteName,
                         Token = GenerateJWToken(appUser).Result,
                         IsSucceded = true,
+                        IsActive = true,
                     };
 
                     return userToReturn;
@@ -140,6 +141,7 @@ namespace CredLend.Service
                         CompleteName = null,
                         Token = null,
                         IsSucceded = false,
+                        IsActive = false,
                     };
 
                     return userToReturn;

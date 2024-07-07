@@ -95,7 +95,6 @@ namespace CredLend_API.Controllers
                 {
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
-                    ReturnDeadLine = request.ReturnDeadLine,
                     ReturnRate = request.ReturnRate
                 };
 
@@ -132,7 +131,6 @@ namespace CredLend_API.Controllers
                     Id = id,
                     ValuePlan = investmentPlan.ValuePlan,
                     TransactionWay = investmentPlan.TransactionWay,
-                    ReturnDeadLine = investmentPlan.ReturnDeadLine,
                     ReturnRate = investmentPlan.ReturnRate
                 };
 

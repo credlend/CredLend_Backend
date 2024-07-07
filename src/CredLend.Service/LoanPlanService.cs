@@ -68,7 +68,7 @@ namespace CredLend.Service
                 ValuePlan = dto.ValuePlan,
                 TransactionWay = dto.TransactionWay,
                 InterestRate = dto.InterestRate,
-                PaymentTerm = dto.PaymentTerm,
+                PaymentTerm = CalculatePaymentTerm(30),
                 IsActive = true
             };
 
@@ -82,7 +82,6 @@ namespace CredLend.Service
             if (entity != null)
             {
                 entity.InterestRate = dto.InterestRate;
-                entity.PaymentTerm = dto.PaymentTerm;
                 entity.TransactionWay = dto.TransactionWay;
                 entity.ValuePlan = dto.ValuePlan;
 
@@ -99,6 +98,13 @@ namespace CredLend.Service
                 entity.IsActive = false;
                 _repository.Update(entity);
             }
+        }
+
+        private DateTime CalculatePaymentTerm(int daysToAdd)
+        {
+            DateTime paymentTerm = DateTime.UtcNow;
+            DateTime futureDate = paymentTerm.AddDays(daysToAdd);
+            return futureDate;
         }
     }
 }
