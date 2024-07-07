@@ -23,11 +23,11 @@ namespace CredLend.Service
             var activePlanDTOs = activePlans.Select(p => new InvestmentPlanDTO
             {
                 Id = p.Id,
+                IsActive = p.IsActive,
                 ReturnDeadLine = p.ReturnDeadLine,
                 ReturnRate = p.ReturnRate,
                 TransactionWay = p.TransactionWay,
                 ValuePlan = p.ValuePlan,
-                IsActive = p.IsActive
             }).ToList();
 
             return activePlanDTOs;
@@ -45,11 +45,11 @@ namespace CredLend.Service
             var planDTO = new InvestmentPlanDTO
             {
                 Id = plan.Id,
+                IsActive = plan.IsActive,
                 ReturnDeadLine = plan.ReturnDeadLine,
                 ReturnRate = plan.ReturnRate,
                 TransactionWay = plan.TransactionWay,
                 ValuePlan = plan.ValuePlan,
-                IsActive = plan.IsActive
             };
 
             return planDTO;
@@ -61,7 +61,7 @@ namespace CredLend.Service
             {
                 ValuePlan = dto.ValuePlan,
                 TransactionWay = dto.TransactionWay,
-                ReturnDeadLine = dto.ReturnDeadLine,
+                ReturnDeadLine = CalculateReturnDeadLine(30),
                 ReturnRate = dto.ReturnRate,
                 IsActive = true
             };
@@ -75,7 +75,6 @@ namespace CredLend.Service
 
             if (entity != null)
             {
-                entity.ReturnDeadLine = dto.ReturnDeadLine;
                 entity.ReturnRate = dto.ReturnRate;
                 entity.TransactionWay = dto.TransactionWay;
                 entity.ValuePlan = dto.ValuePlan;
@@ -93,6 +92,13 @@ namespace CredLend.Service
                 entity.IsActive = false;
                 _repository.Update(entity);
             }
+        }
+
+        private DateTime CalculateReturnDeadLine(int daysToAdd)
+        {
+            DateTime returnDeadLine = DateTime.UtcNow;
+            DateTime futureDate = returnDeadLine.AddDays(daysToAdd);
+            return futureDate;
         }
     }
 }

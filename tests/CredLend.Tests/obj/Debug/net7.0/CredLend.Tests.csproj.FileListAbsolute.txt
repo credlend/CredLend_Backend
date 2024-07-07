@@ -508,6 +508,3 @@ C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\te
 C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfoInputs.cache
 C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfo.cs
 C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.csproj.CoreCompileInputs.cache
-C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.dll
-C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\refint\CredLend.Tests.dll
-C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.pdb

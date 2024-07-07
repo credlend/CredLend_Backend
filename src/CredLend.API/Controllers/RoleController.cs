@@ -1,62 +1,33 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CredLend.Domain.Dto;
-using Domain.Models.Identity;
-using Domain.Models.RoleModel;
-using Domain.Models.UserModel;
+using CredLend.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CredLend_API.Controllers
+namespace CredLend.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
     public class RoleController : ControllerBase
     {
-        private readonly RoleManager<Role> _roleManagers;
-        private readonly UserManager<User> _userManager;
-        private readonly IRoleRepository _roleRepository;
+        private readonly IRoleService _roleService;
 
-        public RoleController(RoleManager<Role> roleManagers, UserManager<User> userManager, IRoleRepository roleRepository)
+        public RoleController(IRoleService roleService)
         {
-            _roleManagers = roleManagers;
-            _userManager = userManager;
-            _roleRepository = roleRepository;
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                var entity = await _roleRepository.GetAll();
-
-                if (entity == null)
-                {
-                    return NotFound("Nenhum papel encontrado");
-                }
-
-                return Ok(entity);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
-            }
+            _roleService = roleService;
         }
 
         [HttpPost("CreateRole")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateRole(RoleDTO RoleDTO)
+        public async Task<IActionResult> CreateRole(RoleDTO roleDto)
         {
             try
             {
-                var retorno = await _roleManagers.CreateAsync(new Role { Name = RoleDTO.Name });
+                _roleService.Add(roleDto);
 
-                return Ok(retorno);
+                return Ok("Role created successfully");
             }
             catch (Exception ex)
             {
@@ -67,25 +38,13 @@ namespace CredLend_API.Controllers
 
         [HttpPut("UpdateUserRole")]
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateUserRoles(UpdateUserDTO model)
+        public async Task<IActionResult> UpdateUserRoles(UpdateUserDTO updateUserDto)
         {
             try
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                _roleService.Update(updateUserDto);
 
-                if (user != null)
-                {
-                    if (model.Delete)
-                        await _userManager.RemoveFromRoleAsync(user, model.Role);
-                    else
-                        await _userManager.AddToRoleAsync(user, model.Role);
-                }
-                else
-                {
-                    return Ok("Usuário não encontrado");
-                }
-
-                return Ok("Sucesso");
+                return Ok("Success");
             }
             catch (Exception ex)
             {

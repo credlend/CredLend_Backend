@@ -9,6 +9,6 @@ namespace CredLend.Domain.Dto
     {
         public string Email { get; set; }
         public string Role { get; set; }
-        public bool Delete { get; set; } = false;
+        public bool Deleted { get; set; } = false;
     }
 }

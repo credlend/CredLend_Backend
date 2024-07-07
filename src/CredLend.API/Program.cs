@@ -63,13 +63,14 @@ builder.Services.AddScoped<IInvestmentPlanService, InvestmentPlanService>();
 builder.Services.AddScoped<ILoanPlanService, LoanPlanService>();
 builder.Services.AddScoped<IOperationsLoanPlanService, OperationsLoanPlanService>();
 builder.Services.AddScoped<IOperationsInvestmentPlanService, OperationsInvestmentPlanService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IOperationsLoanPlanRepository, OperationsLoanPlanRepository>();
 builder.Services.AddScoped<IOperationsInvestmentPlanRepository, OperationsInvestmentPlanRepository>();
 builder.Services.AddScoped<ILoanPlanRepository, LoanPlanRepository>();
 builder.Services.AddScoped<IInventmentPlanRepository, InvestmentPlanRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IUserRepository<>), typeof(UserRepository<>));
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationDataContext));
 

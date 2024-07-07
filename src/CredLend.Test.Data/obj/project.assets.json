@@ -2667,7 +2667,9 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "CredLend.Domain": "1.0.0",
-          "CredLend.Infrastructure": "1.0.0"
+          "CredLend.Infrastructure": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.10",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.10"
         },
         "compile": {
           "bin/placeholder/CredLend.Service.dll": {}

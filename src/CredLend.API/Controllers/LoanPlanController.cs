@@ -98,15 +98,14 @@ namespace CredLend_API.Controllers
                     return BadRequest("O objeto de solicitação é nulo");
                 }
 
-                var investmentPlan = new LoanPlanDTO
+                var loanPlan = new LoanPlanDTO
                 {
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
-                    InterestRate = request.InterestRate,
-                    PaymentTerm = request.PaymentTerm,
+                    InterestRate = request.InterestRate
                 };
 
-                _service.Add(investmentPlan);
+                _service.Add(loanPlan);
 
                 return Ok();
             }
@@ -140,7 +139,6 @@ namespace CredLend_API.Controllers
                     ValuePlan = loanPlan.ValuePlan,
                     TransactionWay = loanPlan.TransactionWay,
                     InterestRate = loanPlan.InterestRate,
-                    PaymentTerm = loanPlan.PaymentTerm
                 };
 
                 _service.Update(investmentPlanDTO);
