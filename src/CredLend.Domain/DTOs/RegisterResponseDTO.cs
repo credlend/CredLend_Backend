@@ -13,5 +13,6 @@ namespace CredLend.Domain.DTOs
         public string CompleteName { get; set; }
         public string Token { get; set; }
         public bool IsSucceded { get; set; }
+        public bool UserAlreadyExists { get; set; }
     }
 }

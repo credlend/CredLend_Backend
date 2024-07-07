@@ -66,7 +66,15 @@ namespace CredLend.Service
 
             if (existingUser != null)
             {
-                throw new InvalidOperationException("Username already exists");
+                return new RegisterResponseDTO
+                {
+                    Id = Guid.Empty,
+                    UserName = existingUser.UserName,
+                    CompleteName = existingUser.CompleteName,
+                    Token = null,
+                    IsSucceded = false,
+                    UserAlreadyExists = true
+                };
             }
 
             var user = new User
@@ -92,8 +100,9 @@ namespace CredLend.Service
                 response.Id = Guid.Parse(appUser.Id);
                 response.UserName = appUser.UserName;
                 response.CompleteName = appUser.CompleteName;
-                response.IsSucceded = true;
                 response.Token = GenerateJWToken(appUser).Result;
+                response.IsSucceded = true;
+                response.UserAlreadyExists = false;
 
                 return response;
             }
@@ -101,8 +110,9 @@ namespace CredLend.Service
             response.Id = Guid.Empty;
             response.UserName = null;
             response.CompleteName = null;
-            response.IsSucceded = false;
             response.Token = null;
+            response.IsSucceded = false;
+            response.UserAlreadyExists = false;
 
             return response;
         }

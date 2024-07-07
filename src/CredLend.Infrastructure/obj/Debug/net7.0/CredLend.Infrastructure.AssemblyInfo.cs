@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CredLend.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2618cc47107941da91059a365b94b2d064f3f910")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+980f36d162e9e23e15595b7b15f01966d80b7293")]
 [assembly: System.Reflection.AssemblyProductAttribute("CredLend.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CredLend.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

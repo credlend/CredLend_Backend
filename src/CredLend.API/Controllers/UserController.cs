@@ -73,6 +73,10 @@ namespace CredLend_API.Controllers
                 {
                     return Ok(response);
                 }
+                else if (response.UserAlreadyExists)
+                {
+                    return BadRequest("Usuário já cadastrado.");
+                }
                 else
                 {
                     return BadRequest("Falha ao registrar usuário. Verifique os dados e tente novamente.");
