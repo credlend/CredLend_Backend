@@ -71,6 +71,7 @@ namespace CredLend.Service
                     Id = Guid.Empty,
                     UserName = existingUser.UserName,
                     CompleteName = existingUser.CompleteName,
+                    Email = existingUser.Email,
                     Token = null,
                     IsSucceded = false,
                     UserAlreadyExists = true
@@ -100,6 +101,7 @@ namespace CredLend.Service
                 response.Id = Guid.Parse(appUser.Id);
                 response.UserName = appUser.UserName;
                 response.CompleteName = appUser.CompleteName;
+                response.Email = appUser.Email;
                 response.Token = GenerateJWToken(appUser).Result;
                 response.IsSucceded = true;
                 response.UserAlreadyExists = false;
@@ -110,6 +112,7 @@ namespace CredLend.Service
             response.Id = Guid.Empty;
             response.UserName = null;
             response.CompleteName = null;
+            response.Email = null;
             response.Token = null;
             response.IsSucceded = false;
             response.UserAlreadyExists = false;
@@ -135,6 +138,7 @@ namespace CredLend.Service
                         Id = Guid.Parse(appUser.Id),
                         UserName = appUser.UserName,
                         CompleteName = appUser.CompleteName,
+                        Email = appUser.Email,
                         Token = GenerateJWToken(appUser).Result,
                         IsSucceded = true,
                         IsActive = true,
@@ -149,6 +153,7 @@ namespace CredLend.Service
                         Id = Guid.Empty,
                         UserName = null,
                         CompleteName = null,
+                        Email = null,
                         Token = null,
                         IsSucceded = false,
                         IsActive = false,
@@ -163,6 +168,7 @@ namespace CredLend.Service
                 Id = Guid.Empty,
                 UserName = null,
                 CompleteName = null,
+                Email = null,
                 Token = null,
                 IsSucceded = false,
             };

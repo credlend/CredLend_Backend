@@ -48,6 +48,7 @@ namespace CredLend.Service
             return operationDTO;
         }
 
+
         public void Add(OperationsLoanPlanDTO dto)
         {
             var opLoanPlan = new OperationsLoanPlan
@@ -56,7 +57,7 @@ namespace CredLend.Service
                 TransactionWay = dto.TransactionWay,
                 Email = dto.Email,
                 InterestRate = dto.InterestRate,
-                OperationDate = dto.OperationDate,
+                OperationDate = DateTime.UtcNow,
                 PaymentTerm = dto.PaymentTerm,
                 UserName = dto.UserName,
                 UserID = dto.UserID,
