@@ -14,6 +14,7 @@ namespace CredLend.Domain.DTOs
         public string? CompleteName { get; set; }
         public string? Email { get; set; }
         public bool IsSucceded { get; set; }
-        public bool IsActive { get; set; }
+        public bool ExternalLogin { get; set; }
+
     }
 }

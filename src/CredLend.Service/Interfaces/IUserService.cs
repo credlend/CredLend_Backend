@@ -2,6 +2,7 @@
 using CredLend.Domain.DTOs;
 using CredLend.Domain.Requests;
 using Domain.Models.UserModel;
+using Google.Apis.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace CredLend.Service.Interfaces
         Task<LoginResponseDTO> Login (UserLoginDTO loginDto);
         void Delete(Guid id);
         Task<string> GenerateJWToken(User user);
+        Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(ExternalAuthDTO externalAuth);
+        Task<AuthResponseDTO>CreateExternalLogin(ExternalAuthDTO externalAuth);
     }
 }

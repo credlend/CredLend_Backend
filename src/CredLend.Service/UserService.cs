@@ -5,6 +5,7 @@ using CredLend.Domain.Requests;
 using CredLend.Service.Interfaces;
 using Domain.Core.Data;
 using Domain.Models.UserModel;
+using Google.Apis.Auth;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -27,6 +28,7 @@ namespace CredLend.Service
         private readonly UserManager<User> _userManager;
         public SignInManager<User> _SignInManager;
         private readonly ApplicationDataContext _context;
+        private readonly IConfigurationSection _goolgeSettings;
 
         public UserService(IConfiguration config,
             UserManager<User> userManager, SignInManager<User> signInManager, ApplicationDataContext context)
@@ -35,6 +37,7 @@ namespace CredLend.Service
             _userManager = userManager;
             _SignInManager = signInManager;
             _context = context;
+            _goolgeSettings = _config.GetSection("GoogleAuthSettings");
         }
 
         public async Task<UserDTO> GetById(Guid id)
@@ -74,7 +77,8 @@ namespace CredLend.Service
                     Email = existingUser.Email,
                     Token = null,
                     IsSucceded = false,
-                    UserAlreadyExists = true
+                    UserAlreadyExists = true,
+                    ExternalLogin = false
                 };
             }
 
@@ -105,6 +109,7 @@ namespace CredLend.Service
                 response.Token = GenerateJWToken(appUser).Result;
                 response.IsSucceded = true;
                 response.UserAlreadyExists = false;
+                response.ExternalLogin = false;
 
                 return response;
             }
@@ -116,6 +121,7 @@ namespace CredLend.Service
             response.Token = null;
             response.IsSucceded = false;
             response.UserAlreadyExists = false;
+            response.ExternalLogin = false;
 
             return response;
         }
@@ -141,7 +147,7 @@ namespace CredLend.Service
                         Email = appUser.Email,
                         Token = GenerateJWToken(appUser).Result,
                         IsSucceded = true,
-                        IsActive = true,
+                        ExternalLogin = false
                     };
 
                     return userToReturn;
@@ -156,7 +162,7 @@ namespace CredLend.Service
                         Email = null,
                         Token = null,
                         IsSucceded = false,
-                        IsActive = false,
+                        ExternalLogin = false
                     };
 
                     return userToReturn;
@@ -171,6 +177,7 @@ namespace CredLend.Service
                 Email = null,
                 Token = null,
                 IsSucceded = false,
+                ExternalLogin = false
             };
 
             return response;
@@ -217,6 +224,99 @@ namespace CredLend.Service
             var token = tokenHandler.CreateToken(tokenDescription);
 
             return tokenHandler.WriteToken(token);
+        }
+
+        public async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(ExternalAuthDTO externalAuth)
+        {
+            try
+            {
+                var settings = new GoogleJsonWebSignature.ValidationSettings()
+                {
+                    Audience = new List<string>() { _goolgeSettings.GetSection("clientId").Value }
+                };
+
+                var payload = await GoogleJsonWebSignature.ValidateAsync(externalAuth.IdToken, settings);
+                return payload;
+            }
+            catch (Exception ex)
+            {
+                //log an exception
+                return null;
+            }
+        }
+
+        public async Task<AuthResponseDTO> CreateExternalLogin(ExternalAuthDTO externalAuth)
+        {
+            var payload = await VerifyGoogleToken(externalAuth);
+
+            if (payload == null)
+                throw new Exception("Autenticação externa inválida.");
+
+            var info = new UserLoginInfo(externalAuth.Provider, payload.Subject, externalAuth.Provider);
+
+            var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+
+            if (user == null)
+            {
+                user = await _userManager.FindByEmailAsync(payload.Email);
+                if (user == null)
+                {
+                    string givenName = string.Join("", payload.GivenName.Split(new char[] { ' ' }));
+
+                    string familyname = string.Join("", payload.FamilyName.Split(new char[] { ' ' }));
+
+                    user = new User
+                    {
+                        Email = payload.Email,
+                        CompleteName = payload.Name,
+                        UserName = givenName + familyname.Trim(),
+                        IsActive = true,
+                        NormalizedEmail = payload.Email.ToUpper(),
+                        NormalizedUserName = (givenName + familyname.Trim()).ToUpper(),
+                    };
+                    var userResult = await _userManager.CreateAsync(user);
+
+                    if (!userResult.Succeeded)
+                    {
+                        throw new Exception("Ocorreu um erro ao criar um usuário.");
+                    }
+
+                    var roleResult = await _userManager.AddToRoleAsync(user, "USER");
+
+                    if (!roleResult.Succeeded)
+                    {
+                        throw new Exception("Ocorreu um erro ao adicionar usuário à role USER.");
+                    }
+
+                    var loginResult = await _userManager.AddLoginAsync(user, info);
+
+                    if (!loginResult.Succeeded)
+                    {
+                        throw new Exception($"Ocorreu um erro ao adicionar login externo ao usuário.");
+                    }
+                }
+                else
+                {
+                    await _userManager.AddLoginAsync(user, info);
+                }
+            }
+            if (user == null)
+                throw new Exception("Autenticação externa inválida..");
+
+            var token = await GenerateJWToken(user);
+
+            var response = new AuthResponseDTO
+            {
+                Token = token,
+                UserName = user.UserName,
+                CompleteName = user.CompleteName,
+                Email = user.Email,
+                Id = Guid.Parse(user.Id),
+                IsAuthSuccessful = true,
+                ExternalLogin = true,
+            };
+
+            return response;
         }
     }
 }
