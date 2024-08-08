@@ -13,7 +13,6 @@ namespace Domain.Requests
         public string UserID { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public DateTime OperationDate { get; set; }
         public double ReturnRate { get; set; }
         public DateTime ReturnDeadLine { get; set; }
     }

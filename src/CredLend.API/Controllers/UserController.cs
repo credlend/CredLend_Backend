@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using AutoMapper;
 using CredLend.Domain.Dto;
+using CredLend.Domain.DTOs;
 using CredLend.Domain.Requests;
 using CredLend.Domain.ViewModels;
 using CredLend.Service.Interfaces;
@@ -10,10 +11,12 @@ using Domain.Core.Data;
 using Domain.Models.Identity;
 using Domain.Models.UserModel;
 using Domain.ViewModels;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CredLend_API.Controllers
@@ -22,8 +25,8 @@ namespace CredLend_API.Controllers
     [Route("api/v1/[controller]")]
     public class UserController : ControllerBase
     {
+       
         private readonly IUserService _service;
-
         public UserController(IUserService service)
         {
             _service = service;
@@ -73,6 +76,10 @@ namespace CredLend_API.Controllers
                 {
                     return Ok(response);
                 }
+                else if (response.UserAlreadyExists)
+                {
+                    return BadRequest("Usuário já cadastrado.");
+                }
                 else
                 {
                     return BadRequest("Falha ao registrar usuário. Verifique os dados e tente novamente.");
@@ -102,7 +109,7 @@ namespace CredLend_API.Controllers
             {
                 var user = await _service.Login(userLogin);
 
-                if (user.IsSucceded == false || user.IsActive == false || user.Token == null || 
+                if (user.IsSucceded == false || user.Token == null ||
                     user.UserName == null || user.CompleteName == null || user.Id == Guid.Empty)
                 {
                     return BadRequest("Falha ao realizar o login do usuário. Verifique os dados e tente novamente.");
@@ -124,7 +131,7 @@ namespace CredLend_API.Controllers
         {
             try
             {
-                _service.Delete(id);
+                 _service.Delete(id);
 
                 return Ok();
             }
@@ -133,5 +140,24 @@ namespace CredLend_API.Controllers
                 return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
             }
         }
+
+
+        [HttpPost("ExternalLogin")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLogin(ExternalAuthDTO externalAuth)
+        {
+            try
+            {
+               var response = await _service.CreateExternalLogin(externalAuth);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Erro interno do servidor: {ex.Message}");
+            }
+
+        }
+
     }
 }

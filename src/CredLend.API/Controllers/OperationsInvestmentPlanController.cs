@@ -41,7 +41,6 @@ namespace CredLend_API.Controllers
                     ValuePlan = request.ValuePlan,
                     TransactionWay = request.TransactionWay,
                     Email = request.Email,
-                    OperationDate = request.OperationDate,
                     ReturnDeadLine = request.ReturnDeadLine,
                     UserID = request.UserID,
                     UserName = request.UserName,

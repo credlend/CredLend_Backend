@@ -56,7 +56,7 @@ namespace CredLend.Service
                 Email = dto.Email,
                 ReturnRate = dto.ReturnRate,
                 ReturnDeadLine= dto.ReturnDeadLine, 
-                OperationDate = dto.OperationDate,
+                OperationDate = DateTime.UtcNow,
                 UserName = dto.UserName,
                 UserID = dto.UserID,
                 IsActive = true

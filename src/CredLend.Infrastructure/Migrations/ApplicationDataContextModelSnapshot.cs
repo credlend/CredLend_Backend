@@ -211,15 +211,13 @@ namespace Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("BirthDate")
+                    b.Property<DateTime?>("BirthDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CPF")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CompleteName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")

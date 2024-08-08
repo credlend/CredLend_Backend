@@ -10,15 +10,15 @@ namespace CredLend.Domain.Dto
     {
         public Guid Id { get; set; }
 
-        public string CompleteName { get; set; }
+        public string? CompleteName { get; set; }
 
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
-        public string CPF { get; set; }
+        public string? CPF { get; set; }
 
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public bool IsActive { get; set; }
 
@@ -28,6 +28,7 @@ namespace CredLend.Domain.Dto
         [Compare("Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
 
     }
 }
