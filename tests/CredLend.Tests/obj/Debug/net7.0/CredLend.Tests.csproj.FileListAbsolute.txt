@@ -334,3 +334,8 @@ C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Backend\tests\CredLend.Tests\
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.pdb
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.genruntimeconfig.cache
 C:\Users\gussi\OneDrive\Área de Trabalho\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\ref\CredLend.Tests.dll
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.csproj.AssemblyReference.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfoInputs.cache
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.AssemblyInfo.cs
+C:\Users\mario\Documents\Projeto Integrador\CredLend_Backend\CredLend_Backend\tests\CredLend.Tests\obj\Debug\net7.0\CredLend.Tests.csproj.CoreCompileInputs.cache
