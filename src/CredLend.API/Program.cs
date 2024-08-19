@@ -9,7 +9,6 @@ using Domain.Models.PlanModel;
 using Domain.Models.RoleModel;
 using Domain.Models.UserModel;
 using Infrastructure.Data;
-using Infrastructure.Mapping;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -74,13 +73,6 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationDataContext));
 
-var mappingConfig = new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new AutoMapperProfiles());
-});
-
-IMapper mapper = mappingConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
 
 builder.Services.AddIdentityCore<User>(options =>
 {

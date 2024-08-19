@@ -49,8 +49,16 @@ namespace Infrastructure.Data
                 .IsRequired();
             });
 
+            modelBuilder.Entity<OperationsLoanPlan>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.OperationsLoanPlan)
+                .HasForeignKey(o => o.UserID);
+
+            modelBuilder.Entity<OperationsInvestmentPlan>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.OperationsInvestmentPlan)
+                .HasForeignKey(o => o.UserID);
+
         }
     }
-
-
 }

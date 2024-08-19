@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projeto Integrador\\CredLend_Backend\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}|src\\CredLend.API\\CredLend.API.csproj|c:\\projeto integrador\\credlend_backend\\src\\credlend.api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72CBDFBF-68F8-41BD-94D8-F16C50C6F6E1}|src\\CredLend.API\\CredLend.API.csproj|solutionrelative:src\\credlend.api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E31A64C-807E-450C-9809-AAAA1669F5F3}|src\\CredLend.Service\\CredLend.Service.csproj|c:\\projeto integrador\\credlend_backend\\src\\credlend.service\\interfaces\\iroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E31A64C-807E-450C-9809-AAAA1669F5F3}|src\\CredLend.Service\\CredLend.Service.csproj|solutionrelative:src\\credlend.service\\interfaces\\iroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E31A64C-807E-450C-9809-AAAA1669F5F3}|src\\CredLend.Service\\CredLend.Service.csproj|c:\\projeto integrador\\credlend_backend\\src\\credlend.service\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E31A64C-807E-450C-9809-AAAA1669F5F3}|src\\CredLend.Service\\CredLend.Service.csproj|solutionrelative:src\\credlend.service\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "src\\CredLend.API\\Controllers\\RoleController.cs",
+              "ToolTip": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.API\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "src\\CredLend.API\\Controllers\\RoleController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowCQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T12:17:12.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IRoleService.cs",
+              "DocumentMoniker": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Service\\Interfaces\\IRoleService.cs",
+              "RelativeDocumentMoniker": "src\\CredLend.Service\\Interfaces\\IRoleService.cs",
+              "ToolTip": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Service\\Interfaces\\IRoleService.cs",
+              "RelativeToolTip": "src\\CredLend.Service\\Interfaces\\IRoleService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T12:16:56.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoleService.cs",
+              "DocumentMoniker": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Service\\RoleService.cs",
+              "RelativeDocumentMoniker": "src\\CredLend.Service\\RoleService.cs",
+              "ToolTip": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Service\\RoleService.cs",
+              "RelativeToolTip": "src\\CredLend.Service\\RoleService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-19T12:16:45.162Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

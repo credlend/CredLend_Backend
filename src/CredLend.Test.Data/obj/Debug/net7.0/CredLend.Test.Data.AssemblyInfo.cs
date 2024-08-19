@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CredLend.Test.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ef9d8e013b47253dd2c38690b9aebf5c2b588ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3f69dc3c5854346b26daf37e364434eab7230b8")]
 [assembly: System.Reflection.AssemblyProductAttribute("CredLend.Test.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CredLend.Test.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

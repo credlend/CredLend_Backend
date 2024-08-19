@@ -25,18 +25,5 @@ namespace CredLend.Service
         {
             await _roleManager.CreateAsync(new Role { Name = roleDto.Name });
         }
-
-        public async Task Update(UpdateUserDTO userDto)
-        {
-            var user = await _userManager.FindByEmailAsync(userDto.Email);
-
-            if (user != null)
-            {
-                if (userDto.Deleted)
-                    await _userManager.RemoveFromRoleAsync(user, userDto.Role);
-                else
-                    await _userManager.AddToRoleAsync(user, userDto.Role);
-            }
-        }
     }
 }

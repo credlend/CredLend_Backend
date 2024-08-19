@@ -9,7 +9,5 @@ namespace CredLend.Service.Interfaces
     public interface IRoleService
     {
         public Task Add(RoleDTO dto);
-
-        public Task Update(UpdateUserDTO dto);
     }
 }

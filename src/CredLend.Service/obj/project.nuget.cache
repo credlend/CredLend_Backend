@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rsjYNmyBUck=",
+  "dgSpecHash": "q79ATPbyAs0=",
   "success": true,
   "projectFilePath": "C:\\Projeto Integrador\\CredLend_Backend\\src\\CredLend.Service\\CredLend.Service.csproj",
   "expectedPackageFiles": [
@@ -53,10 +53,7 @@
     "C:\\Users\\leona\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\leona\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
-    "C:\\Users\\leona\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
-    "C:\\Users\\leona\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
-    "C:\\Users\\leona\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
-    "C:\\Users\\leona\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512"
+    "C:\\Users\\leona\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

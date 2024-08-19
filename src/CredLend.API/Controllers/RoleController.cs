@@ -35,22 +35,5 @@ namespace CredLend.API.Controllers
                     $"ERROR {ex.Message}");
             }
         }
-
-        [HttpPut("UpdateUserRole")]
-        [AllowAnonymous]
-        public async Task<IActionResult> UpdateUserRoles(UpdateUserDTO updateUserDto)
-        {
-            try
-            {
-                _roleService.Update(updateUserDto);
-
-                return Ok("Success");
-            }
-            catch (Exception ex)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError,
-                    $"ERROR {ex.Message}");
-            }
-        }
     }
 }
